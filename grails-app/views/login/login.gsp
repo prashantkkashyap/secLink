@@ -90,7 +90,7 @@
                 <div class="line"><label for="fname">First Name: </label><input type="text" id="fname"/></div>
                 <div class="line"><label for="lname">Last Name: </label><input type="text" id="lname"/></div>
                 <div class="line"><label for="emailid">Email*: </label><input type="email" id="emailid"/></div>
-                <div class="line"><label for="username"> Username*: </label><input type="text" id="username" /></div>
+                <div class="line"><label for="username">Username*: </label><input type="text" id="username" /></div>
                 <div class="line"><label for="pwd">Password*: </label><input type="password" id="pwd"/></div>
                 <div class="line"><label for="pwd">Confirm Password*: </label><input type="password" id="pwd" /></div>
                 <div class="line">

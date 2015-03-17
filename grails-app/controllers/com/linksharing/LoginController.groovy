@@ -2,7 +2,6 @@ package com.linksharing
 
 class LoginController {
 
-    def index() { }
     // controller -1
     def login()
     {

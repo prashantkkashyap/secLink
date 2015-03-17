@@ -19,7 +19,7 @@
     #top-posts{margin:2%; padding:0%;width:60%;border:1px solid black;}
     #login{margin:2%; padding:0%;width:25%;border:1px solid black;alignment:top;}
     #register{margin:2%; padding:0%;width:25%;border:1px solid black}
-    .inner-container{margin:2%; padding:2%;text-align:left;}
+    .inner-container{margin:0%; padding:0%;text-align:left;}
     input[type="email"],input[type="password"]{width:160px;}
     form input[type="text"],
     form input[type="password"],
@@ -40,6 +40,15 @@
         height:50px;
         width:50px;
     }
+    ul{padding:0%;}
+    ul li
+    {
+        margin: 0%;
+        list-style-type: none;
+        display: inline-block;
+        padding-left: 15px;
+         }
+
     </style>
 </head>
 <body>
@@ -48,7 +57,7 @@
     <div>
         <div id="recent-shares">
             <div class="heading">Recent Shares</div>
-            <g:render template='recentShares' collection="${top2}" var="top"/>
+            <g:render template='recentShares' collection="${topRecentShares}" var="topRecentShare"></g:render>
         </div>
     </div>
     <div id="top-posts">
@@ -57,17 +66,12 @@
             <option value="week" >Week</option>
             <option value="Month" >Month</option>
             <option value="Year" >Year</option>
-        </select></div>
-        <div class="inner-container">
-           %{-- ${recentPost5.size()}--}%
-           %{--<g:render template="topPosts" collection="${recentPost5}"  var="recent5"/>--}%
-
-
-            <g:render template="topPosts" model="[topPost:recentPost5]"/>
-
+        </select>
         </div>
+        <div class="inner-container">
+            <g:render template="topPosts" model="[topPost:topPost]"></g:render>
+         </div>
     </div>
-
     <div id="login" class="right">
         <div class="heading">Login</div>
         <div class="inner-container">
@@ -77,7 +81,7 @@
              Login as : ${session["user"]}  | <g:link action="logout">Logout</g:link>
             </g:if>
             <g:else>
-                <g:form action="loginHandler">
+                <g:form controller="login" action="loginHandler">
                     <div class="line"><lable for="email/username">Email/Username*:&nbsp;&nbsp;</lable><input type="email" id="email" name="email"/></div>
                     <div class="line"><lable for="password">Password*:&nbsp;&nbsp;</lable><input type="password" id="pwd" name="pwd"/></div>
                     <div class="line"><lable for="login"></lable><input type="submit" value ='Login' id="login"/></div>
@@ -86,7 +90,7 @@
             </g:else>
         </div>
     </div>
-   %{-- <div id="register"  class="right">
+    <div id="register"  class="right">
         <div class="heading">Register</div>
         <div class="inner-container"><form>
             <div class="line"><label for="fname">First Name: </label><input type="text" id="fname"/></div>
@@ -103,7 +107,7 @@
             <div class="submit"><input type="submit" value="Register"/> </div>
         </form></div>
         <g:form name='sign in'></g:form>
-    </div>--}%
+    </div>
 </div>
 </div>
 </body>

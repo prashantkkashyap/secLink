@@ -20,7 +20,12 @@ class DashboardController {
         List<Subscription> totalSubscriptionUser = new ArrayList<Subscription>()
         Subscription.findAllByUser(user).each {subscription ->
            totalSubscriptionUser.add(subscription.topic)
-        }
+            }
+
+       /*totalSubscriptionUser.each{it->
+        int totalPost=  Resource.countByTopic(it.topic)
+       }*/
+
         /*List<Subscription> totalSubscriptionUser = new ArrayList<Subscription>()
 def subscriptions=Subscription.withCriteria{
             eq('user',user)

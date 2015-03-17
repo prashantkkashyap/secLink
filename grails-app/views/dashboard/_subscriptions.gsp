@@ -1,3 +1,4 @@
+
 <div class="heading">Subscriptions<g:link  class="right" action="">View All</g:link></div>
     <div><img src="${resource(dir:'images', file: 'businessman.jpg')}"/></div>
 <g:each in="${totalSubscriptionUser}" var="totalSubscription ">

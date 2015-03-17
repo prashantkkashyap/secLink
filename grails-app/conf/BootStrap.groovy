@@ -96,7 +96,7 @@ class BootStrap {
 
                 LinkResource linkResource = new LinkResource()
                 String url = "http://www.grails.com/page${it}"
-                String description = "Coming Soon${topic}"
+                String description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry${topic}"
                 String title = "DummyLinkTitle${it + 1}"
 
                 linkResource.createdBy = topic.createdBy

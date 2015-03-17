@@ -1,14 +1,13 @@
+<g:each in="${topPost}" var="post">
+    <ul>
+        <li>${post.createdBy.firstName}</li>
+        <li><g:link action="">${post.topic}</g:link></li>
+        <li><g:link action="">View Post</g:link></li>
+    </ul>
+    <ul>
+        <li>${post.description}</li>
+    </ul>
+</g:each>
 
-<%
-    topPost.each {
-        %>
-
-<div> <div>${it.createdBy.userName}<div><g:link action="">${it.topic}</g:link></div>
-    <div>${it.description}</div>
-    <div><g:link action="">View Post</g:link></div>
-</div> </div>
 
 
-<%
-    }
-%>

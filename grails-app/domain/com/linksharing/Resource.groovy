@@ -10,7 +10,7 @@ abstract  class Resource {
     Date lastUpdated
 
     static belongsTo = [topic:Topic]
-    static hasMany = [readingitems: ReadingItem, resourceRating:ResourceRating]
+    static hasMany = [readingitems: ReadingItem, resourceRatings:ResourceRatings]
     static constraints = {
         description(maxSize: 1024)
             }

@@ -93,6 +93,10 @@ environments {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
+    qa{
+        grails.logging.jul.usebridge = true
+         grails.serverURL = "http://prashant.qa6.intelligrape.net"
+    }
 }
 
 // log4j configuration

@@ -48,16 +48,9 @@
     <div>
         <div id="recent-shares">
             <div class="heading">Recent Shares</div>
-            <div class="inner-container"><div> <div><h4>Uday Pratap Singh</h4><div><g:link action="">Grails</g:link></div>
-                <div> <img src="web-app/images/businessman.jpg"><div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-                    <div><g:link action="">View Post</g:link></div>
-            </div> </div></div>
-            <div> <div><h4>Uday Pratap Singh</h4><div><g:link action="">Grails</g:link></div>
-                <div><img src="businessman.jpg"> <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-            <div><g:link action="">View Post</g:link></div>
-                </div> </div></div>
-            </div>
+
         </div>
+    </div>
         <div id="top-posts">
             <div class="heading">Top Posts<select class="right">
                 <option value="Today">Today</option>
@@ -84,8 +77,8 @@
                 <g:else>
                     <g:form action="loginHandler">
                     <div class="line"><lable for="email/username">Email/Username*:&nbsp;&nbsp;</lable><input type="email" id="email" name="email"/></div>
-                    <div class="line"><lable for="password">Password*:&nbsp;&nbsp;</lable><input type="password" id="pwd" name="pwd"/></div>
-                    <div class="line"><lable for="login"></lable><input type="submit" value ='Login' id="login"/></div>
+                    <div class="line"><lable for="password">Password*:&nbsp;&nbsp;</lable><input type="password"  name="pwd"/></div>
+                    <div class="line"><lable for="login"></lable><input type="submit" value ='Login'/></div>
                     <div><a href="" target="_blank">Forgot password</a></div>
                     </g:form>
                 </g:else>
@@ -99,7 +92,7 @@
                 <div class="line"><label for="emailid">Email*: </label><input type="email" id="emailid"/></div>
                 <div class="line"><label for="username"> Username*: </label><input type="text" id="username" /></div>
                 <div class="line"><label for="pwd">Password*: </label><input type="password" id="pwd"/></div>
-                <div class="line"><label for="pwd">Confirm Password*: </label><input type="password" id="pwd"/></div>
+                <div class="line"><label for="pwd">Confirm Password*: </label><input type="password" id="pwd" /></div>
                 <div class="line">
                     <div><label>Gender:</label></div>
                     <div><input type="radio" id="male"/><label for="male">Male</label></div>

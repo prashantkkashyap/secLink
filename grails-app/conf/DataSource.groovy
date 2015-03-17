@@ -26,6 +26,15 @@ environments {
            //logingsql=true
         }
     }
+    qa{
+        dataSource{
+            dbCreate = "create-drop"
+            url = "jdbc:mysql://localhost:3306/prashant_QA"
+            driverClassName="com.mysql.jdbc.Driver"
+            username="prashant"
+            password="igdefault"
+        }
+    }
     test {
         dataSource {
             dbCreate = "create-drop"

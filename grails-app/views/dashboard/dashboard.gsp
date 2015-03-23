@@ -62,7 +62,7 @@
     }
     </style>
     <script type="text/javascript">
-  function sendInvitationPopup(){window.open("/linksharing/dashboard/index","location=no,width=500,height=700"); }
+  function sendInvitationPopup(){window.open('',"location=no,width=500,height=700"); }
     </script>
 </head>
 <body>

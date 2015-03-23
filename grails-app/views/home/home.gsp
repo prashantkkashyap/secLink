@@ -17,7 +17,7 @@
     form label {display:inline-block ; width:100%;}
     #recent-shares{margin:2% 0% 0% 2%; padding:0%;width:60%;height:auto;border:1px solid black;}
     #top-posts{margin:2%; padding:0%;width:60%;border:1px solid black;}
-    #login{margin:2%; padding:0%;width:25%;border:1px solid black;alignment:top;}
+    #loginDiv{margin:2%; padding:0%;width:25%;border:1px solid black;alignment:top;}
     #register{margin:2%; padding:0%;width:25%;border:1px solid black}
     .inner-container{margin:0%; padding:0%;text-align:left;}
     input[type="email"],input[type="password"]{width:160px;}
@@ -72,7 +72,7 @@
             <g:render template="topPosts" model="[topPost:topPost]"></g:render>
          </div>
     </div>
-    <div id="login" class="right">
+    <div id="loginDiv" class="right">
         <div class="heading">Login</div>
         <div class="inner-container">
             ${flash.message}
@@ -98,7 +98,7 @@
             <div class="line"><label for="emailid">Email*: </label><input type="email" id="emailid"/></div>
             <div class="line"><label for="username"> Username*: </label><input type="text" id="username" /></div>
             <div class="line"><label for="pwd">Password*: </label><input type="password" id="pwd"/></div>
-            <div class="line"><label for="pwd">Confirm Password*: </label><input type="password" id="pwd"/></div>
+            <div class="line"><label for="pwd">Confirm Password*: </label><input type="password" id="pwd1"/></div>
             <div class="line">
                 <div><label>Gender:</label></div>
                 <div><input type="radio" id="male"/><label for="male">Male</label></div>

@@ -25,7 +25,7 @@
                 <option value="Private">Private</option>
             </select>
             </li>
-            <li><a href="javascript:sendInvitationPopup"><img src="${resource(dir:'images',file:'mail.png')}"/></a></li>
+            <li><a href="javascript:void(0)" onclick="javascript:sendInvitationPopup()" ><img src="${resource(dir:'images',file:'mail.png')}"/></a></li>
             <li><img src="${resource(dir:'images',file:'file_download.jpg')}"/></li>
             <li><img src="${resource(dir:'images',file:'delete.png')}"/></li>
 

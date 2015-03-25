@@ -92,12 +92,12 @@
     </div>
     <div id="register"  class="right">
         <div class="heading">Register</div>
-        <div class="inner-container"><form>
+        <div class="inner-container"><g:form controller="login" action="register">
             <div class="line"><label for="fname">First Name: </label><input type="text" id="fname"/></div>
             <div class="line"><label for="lname">Last Name: </label><input type="text" id="lname"/></div>
             <div class="line"><label for="emailid">Email*: </label><input type="email" id="emailid"/></div>
             <div class="line"><label for="username"> Username*: </label><input type="text" id="username" /></div>
-            <div class="line"><label for="pwd">Password*: </label><input type="password" id="pwd"/></div>
+            <div class="line"><label for="pwd">Password*: </label><input type="password" id="p"/></div>
             <div class="line"><label for="pwd">Confirm Password*: </label><input type="password" id="pwd1"/></div>
             <div class="line">
                 <div><label>Gender:</label></div>
@@ -105,7 +105,7 @@
                 <div><input type="radio" id="female"/><label for="female">Female</label></div></div>
             <div class="line"><label for="image">Photo</label> <input type="file" id="image"></div>
             <div class="submit"><input type="submit" value="Register"/> </div>
-        </form></div>
+        </g:form></div>
         <g:form name='sign in'></g:form>
     </div>
 </div>

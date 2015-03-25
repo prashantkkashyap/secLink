@@ -62,7 +62,7 @@
     }
     </style>
     <script type="text/javascript">
-  function sendInvitationPopup(){window.open('',"location=no,width=500,height=700"); }
+  function sendInvitationPopup(){window.open("/dashboard/sendInvitationMail.gsp","","width=500,height=500"); }
     </script>
 </head>
 <body>

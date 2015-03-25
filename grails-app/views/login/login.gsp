@@ -54,7 +54,7 @@
                     <div class="line"><lable for="email/username">Email/Username*:&nbsp;&nbsp;</lable><input type="email" id="email" name="email"/></div>
                     <div class="line"><lable for="password">Password*:&nbsp;&nbsp;</lable><input type="password"  name="pwd"/></div>
                     <div class="line"><lable for="login"></lable><input type="submit" value ='Login'/></div>
-                    <div><a href="" target="_blank">Forgot password</a></div>
+                    <div><a href="/login/updateUserPassword.gsp" >Forgot password</a></div>
                     </g:form>
                 </g:else>
             </div>

@@ -6,5 +6,6 @@ class DocumentResource extends Resource {
     static constraints = {
         fileName (nullable: false, blank:false)
         contentType(nullable: false,blank: false)
+
     }
 }

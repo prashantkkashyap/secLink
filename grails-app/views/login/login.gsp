@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>Login</title>
     <style type="text/css">
 
     body {font-family: Helvetica,Arial; font-size:12px;}

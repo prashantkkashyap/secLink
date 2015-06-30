@@ -12,14 +12,14 @@ class BootStrap {
 
     def init = { servletContext ->
 
-       // createUser()
-       /* createTopic()
-        createResources()
+        createUser()
+        createTopic()
+        /*createResources()
         createReadingItems()
         createResourceRatings()
         subscribeTopic()*/
     }
-   /*List <User>createUser(){
+  /* List <User>createUser(){
        List<User> users =new ArrayList<User>()
        (1..5).each {
             User user = new User(firstName: "Prashant ${it}", lastName: "Kashyap${it}", email: "prashant${it}@gmail.com", userName: "prashantkashyap${it}", password: "12345678")
@@ -47,10 +47,10 @@ class BootStrap {
                          }
              return topic as List<Topic>
             topic.save(flush: true)
-         }*/
+         }
+*/
 
-
-   /* def createUser() {
+    def createUser() {
 
         User user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", userName: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], admin: true, active: true)
         User user2 = new User(firstName: "user2", lastName: "Kashyap", email: "abcuser2@gmail.com", userName: "user2", password: "12345678", photo: [1, 2, 3, 4, 5], admin: false, active: true)
@@ -59,9 +59,9 @@ class BootStrap {
 
 
         println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $User.count")
-    }*/
+    }
 
-   /* def createTopic() {
+    def createTopic() {
         Topic user1t1 = new Topic(name: "java1", visibility: Visibility.PRIVATE)
         Topic user1t2 = new Topic(name: "java2", visibility: Visibility.PUBLIC)
         Topic user1t3 = new Topic(name: "java3", visibility: Visibility.PUBLIC)
@@ -89,7 +89,7 @@ class BootStrap {
                 .save(flush: true, failOnError: true) ?: println("Error to add topic2")
     }
 
-    def createResources() {
+    /*def createResources() {
         Topic.list().eachWithIndex { topic, index ->
             5.times {
                 // CreateLink resource
@@ -177,9 +177,7 @@ class BootStrap {
         }
     def subscribeTopic(){
 
-
-    }
-*/
+   }*/
     def destroy = {
     }
 }

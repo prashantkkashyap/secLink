@@ -1,0 +1,14 @@
+$(document).ready(function(){
+           $(".sendInvitationMail").click(function(){
+                $("#sendInvitationMailModal").modal();
+            });
+            $(".createTopicModalDiv").click(function(){
+                $("#createTopicModal").modal();
+            });
+            $(".shareLinkModalDiv").click(function(){
+                $("#shareLinkModal").modal();
+            });
+            $(".shareDocumentModalDiv").click(function(){
+                $("#shareDocumentModal").modal();
+            });
+});

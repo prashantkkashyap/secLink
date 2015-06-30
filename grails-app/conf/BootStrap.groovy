@@ -12,8 +12,8 @@ class BootStrap {
 
     def init = { servletContext ->
 
-        createUser()
-        createTopic()
+       /* createUser()
+        createTopic()*/
         /*createResources()
         createReadingItems()
         createResourceRatings()
@@ -49,7 +49,7 @@ class BootStrap {
             topic.save(flush: true)
          }
 */
-
+/*
     def createUser() {
 
         User user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", userName: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], admin: true, active: true)
@@ -87,7 +87,7 @@ class BootStrap {
                 .addToTopics(user2t4)
                 .addToTopics(user2t5)
                 .save(flush: true, failOnError: true) ?: println("Error to add topic2")
-    }
+    }*/
 
     /*def createResources() {
         Topic.list().eachWithIndex { topic, index ->

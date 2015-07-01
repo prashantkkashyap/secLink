@@ -66,6 +66,19 @@ class SearchService {
         [topicSearchList:topicSearchList]
     }
 
+    def userSearchMethod(def params, User user){
+        def userSearchList=[]
+        userSearchList = User.createCriteria().listDistinct {
+            or{
+                ilike("userName","%${params.query}%")
+                ilike("fristName","%${params.query}%")
+                ilike("lastName","%${params.query}%")
+                ilike("email","%${params.query}%")
+            }
+        }
+        [userSearchList:userSearchList]
+    }
+
             /*postList = Resource.list(params)
             postTotal = Resource.count()
 

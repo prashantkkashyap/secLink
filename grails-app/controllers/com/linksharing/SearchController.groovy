@@ -53,4 +53,9 @@ class SearchController {
         def trendingTopicsList = topicService.trandingTopicMethod()
         render(view: 'search/search')
     }
+    def userSearch(){
+        User user=User.get(session['userId'])
+        params
+        def userList = searchService.userSearchMethod(params,user)
+    }
 }

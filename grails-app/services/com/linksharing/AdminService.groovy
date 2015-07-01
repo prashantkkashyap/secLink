@@ -5,22 +5,34 @@ import grails.transaction.Transactional
 @Transactional
 class AdminService {
 
-    def allUserMethod(User user) {
+    def allUserMethod() {
         List <User>usersList = User.list()
     }
 
-    def activeAndInactiveUsersMethod(User user){
+    def activeUsersMethod(){
 
         List <User> userList = User.list()
-       // println(userList)
-        List <User> activeUsersList = new ArrayList<>()
-        List <User> inactiveUsersList  = new ArrayList<>()
+        // println(userList)
+        List <User> usersList  = new ArrayList<>()
         userList.each {it ->
             if(it.active){
-                activeUsersList.add(it)
-            }else
-                inactiveUsersList.add(it)
+                usersList.add(it)
+            }
         }
-        [activeUsersList:activeUsersList, inactiveUsersList:inactiveUsersList]
+      //  println usersList
+        usersList
+    }
+    def inactiveUsersMethod(){
+
+        List <User> userList = User.list()
+        // println(userList)
+        List <User> usersList  = new ArrayList<>()
+        userList.each {it ->
+            if(!it.active || it.active==false){
+                usersList.add(it)
+            }
+        }
+       // println usersList
+        usersList
     }
 }

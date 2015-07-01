@@ -13,9 +13,27 @@
 
     <link rel="stylesheet" href="${resource(dir:'css',file: 'bootstrap.min.css')}" >
 
-    %{--<script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>--}%
+    <script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
     %{--<script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
     <script rel="script" src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
+    <script >
+        $(document).ready(function(){
+            $('.user').click(function(){
+                var active = {};
+
+                $.ajax({
+                    url: "${createLink(controller: "user",action: "ajaxList")}",
+                    type: "post",
+                    data: {userType:$(this).attr("val")}
+                }).done(function(data){
+                    console.log(data)
+                    $("#renderList").html(data);
+                }).fail(function (data) {
+                    console.log("fails");
+                });
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -23,25 +41,27 @@
         <div class="panel panel-primary" style="margin-top: 7%;">
             <div class="panel panel-heading" >
                <ul>
-                <li>Users</li>
-                   <li>
-                       <form class="navbar-form navbar-right">
-                           <div class="form-group">
-                               <input class="form-control"  type="search" id="search" placeholder="Search"  />
-                           </div>
-                       </form>
-                   </li>
+                <li><h3>Users</h3></li>
                    <li>
                        <div class="dropdown">
                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                               Users <span class="caret"></span>
+                            User   <span class="caret"></span>
                            </button>
                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                               <li><g:link controller="user" action="list">All Users</g:link></li>
-                               <li><g:link controller="user" action="list">Active Users</g:link></li>
-                               <li><g:link controller="user" action="list">Inactive Users</g:link></li>
+                               <li class="user" val="all"><a href="javascript:void(0)">All User</a></li>
+                               <li class="user"  val="active"><a href="javascript:void(0)">Active User</a></li>
+                               <li class="user" val="inactive"><a href="javascript:void(0)">Inactive User</a></li>
                            </ul>
                        </div>
+                   </li>
+                   <li style="vertical-align: middle;">
+                       <g:form controller="search" action="userSearch   " class="navbar-form navbar-right">
+                           <div class="form-group">
+                               <input class="form-control"  type="search"  name="query" value="${params.query}" placeholder="Search"  />
+                               <input type="hidden" name="userId" value="${user.id}">
+                               <g:submitButton name="search" style="color: #000000;"></g:submitButton>
+                           </div>
+                       </g:form>
                    </li>
                </ul>
             </div>
@@ -50,81 +70,27 @@
                         <thead>
                         <tr>
                             <th>
-                                <g:select from="${com.linksharing.User?.list().id}" name="id" noSelection="${['null':'']}" >
-                                    <span class="caret"></span></g:select> Id
+                                %{--<g:select from="${com.linksharing.User?.list().id}" name="id" noSelection="${['null':'']}" >--}%
+                                    <span class="caret"></span> Id
+
                             </th>
+                            %{--<th><g:sortableColumn property="firstName" title="${message(code: 'User.firstName.label', default: 'FirstName')}" /></th>--}%
                             <th>
-                                <g:select from="${com.linksharing.User?.list().userName}" name="userName" noSelection="${['null':'']}" ><span class="caret"></span>
-                                </g:select> UserName</th>
+                                %{--<g:select from="${com.linksharing.User?.list().userName}" name="userName" noSelection="${['null':'']}" >--}%<span class="caret"></span>
+                                UserName</th>
                             <th>
-                                <g:select from="${com.linksharing.User?.list().email}" name="email" noSelection="${['null':'']}"  ><span class="caret"></span>
-                                </g:select> Email</th>
+                                <span class="caret"></span>Email</th>
                             <th>
-                                <g:select from="${com.linksharing.User?.list().firstName}" name="firstName" noSelection="${['null':'']}" ><span class="caret"></span>
-                                </g:select> FirstName</th>
+                                <span class="caret"></span>FirstName</th>
                             <th>
-                                <g:select from="${com.linksharing.User?.list().lastName}" name="lastName" noSelection="${['null':'']}" ><span class="caret"></span>
-                                </g:select> LastName</th>
+                               <span class="caret"></span>LastName</th>
                             <th>
-                                <g:select from="${com.linksharing.User?.list().active}" name="active" noSelection="${['null':'']}" ><span class="caret"></span>
-                                </g:select> Active</th>
-                            <th><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            </ul><span class="caret"></span> Manage</th>
+                                <span class="caret"></span>Active</th>
+                            <th><span class="caret"></span>Manage</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <g:if test="${allUsers}">
-                            <g:each in="${allUsers}" var="allUser">
-                                <tr>
-                                    <td>${allUser.id}</td>
-                                    <td>${allUser.userName}<g:if test="${allUser.admin==true}"> <b>(Admin)</b></g:if></td>
-                                    <td>${allUser.email}</td>
-                                    <td>${allUser.firstName}</td>
-                                    <td>${allUser.lastName}</td>
-                                    <g:if test="${allUser.active == true}">
-                                        <td>Yes</td>
-                                    </g:if>
-                                    <g:elseif test="${!allUser.active}">
-                                        <td>No</td>
-                                    </g:elseif>
-                                    <g:if test="${allUser.active ==true}">
-                                        <td><g:link controller="user" action="inactivateUsers" id="${allUser.id}">Deactivate</g:link></td>
-                                    </g:if> <g:elseif test="${!allUser.active ==true} || ${!allUser.active}">
-                                        <td><g:link  controller="user" action="activateUsers" id="${allUser.id}">Activate</g:link></td>
-                                    </g:elseif>
-                                </tr>
-                            </g:each>
-                        </g:if>
-                        <g:elseif test="${activeUsersList}">
-                            <g:each in="${activeUsersList}" var="activeUsers">
-                                <tr>
-                                    <td>${activeUsers.id}</td>
-                                    <td>${activeUsers.userName}</td>
-                                    <td>${activeUsers.email}</td>
-                                    <td>${activeUsers.firstName}</td>
-                                    <td>${activeUsers.lastName}</td>
-                                    <td>${activeUsers.active}</td>
-                                    <g:if test="${activeUsers.active ==true}">
-                                        <td><g:link controller="user" action="inactivateUsers" id="${activeUsers.id}">Deactivate</g:link></td>
-                                    </g:if>
-                                </tr>
-                            </g:each>
-                        </g:elseif>
-                        <g:elseif test="${inactiveUsersList}">
-                            <g:each in="${inactiveUsersList}" var="inactiveUsers">
-                                <tr>
-                                    <td>${inactiveUsers.id}</td>
-                                    <td>${inactiveUsers.userName}</td>
-                                    <td>${inactiveUsers.email}</td>
-                                    <td>${inactiveUsers.firstName}</td>
-                                    <td>${inactiveUsers.lastName}</td>
-                                    <td>${inactiveUsers.active}</td>
-                                    <g:if test="${!inactiveUsers.active ==true} || ${!inactiveUsers.active}">
-                                        <td><g:link controller="user" action="activateUsers" id="${inactiveUsers.id}">Activate</g:link></td>
-                                    </g:if>
-                                </tr>
-                            </g:each>
-                        </g:elseif>
+                        <tbody id="renderList">
+                            <g:render template="userList" model="${userList}"></g:render>
                         </tbody>
                     </table>
                 </div>

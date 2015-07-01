@@ -25,7 +25,7 @@ class LoginController {
         session['userId'] = user.id
         redirect(controller: 'dashboard', action: 'dashboard')
         } else {
-            flash.message ='User is deactivated by Admin !! contact to administration !!'
+            flash.message ='User is deactivated by Admin !! contact to administration !!!'
             render(view: '/template/alertTemplate' , model:[flash:flash.message])
         }
 

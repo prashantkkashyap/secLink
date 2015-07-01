@@ -25,7 +25,7 @@ class UserController {
 
     }
 
-    def list() {
+    /*def list() {
         User user = User.get(session['userId'])
 
         def allUsers = adminService.allUserMethod(user)
@@ -40,7 +40,35 @@ class UserController {
             flash.message = "Accesss denied. Only for Admin "
             redirect(controller: 'dashboard', action: 'dashboard')
         }
+    }*/
+    def list(){
+        User user=User.get(session['userId'])
+        String type = params.userType ?: "all"
+        def usersList
+        if(type == "all")
+            usersList = adminService.allUserMethod()
+        if(type == "active"){
+            usersList = adminService.activeUsersMethod()
+                   }
+        if(type == "inactive")
+            usersList = adminService.inactiveUsersMethod()
+
+        render(view:'admin',model: [user:user,userList:usersList] )
     }
+    def ajaxList(){
+        //User user=User.get(session['userId'])
+        String type = params.userType ?: "all"
+        def usersList
+        if(type == "all")
+            usersList = adminService.allUserMethod()
+        if(type == "active")
+            usersList = adminService.activeUsersMethod()
+        if(type == "inactive")
+            usersList = adminService.inactiveUsersMethod()
+
+        render(template: "userList",model: [userList:usersList] )
+    }
+
     def inactivateUsers (){
 
         User user = User.get(session['userId'])

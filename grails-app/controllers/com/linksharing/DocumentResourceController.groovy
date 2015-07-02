@@ -31,10 +31,10 @@ class DocumentResourceController {
                 //  println readingItem
                 documentResource.save(flush: true,failOnError: true)
 
-                def webRootDir = grailsApplication.config.uploadFolder
+               /* def webRootDir = grailsApplication.config.uploadFolder
                 def userDir = new File(webRootDir, "/file/${user.id}")
                 userDir.mkdirs()
-                uploadedFile.transferTo( new File(userDir, uploadedFile.originalFilename))
+                uploadedFile.transferTo( new File(userDir, uploadedFile.originalFilename))*/
 
             }
             if(uploadedFile.empty || uploadedFile==null){

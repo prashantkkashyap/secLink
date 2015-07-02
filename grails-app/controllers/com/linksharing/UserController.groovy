@@ -47,11 +47,11 @@ class UserController {
         def usersList
         if(type == "all")
             usersList = adminService.allUserMethod()
-        if(type == "active"){
+        /*if(type == "active"){
             usersList = adminService.activeUsersMethod()
                    }
         if(type == "inactive")
-            usersList = adminService.inactiveUsersMethod()
+            usersList = adminService.inactiveUsersMethod()*/
 
         render(view:'admin',model: [user:user,userList:usersList] )
     }

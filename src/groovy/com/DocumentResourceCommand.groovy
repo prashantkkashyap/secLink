@@ -9,11 +9,14 @@ import grails.validation.Validateable
 @Validateable
 class DocumentResourceCommand {
     String fileName
+    String contentType
     Topic topic
     String description
 
-    static mapping={
+    static constraints  = {
         description type :'text'
+        fileName (nullable: false, blank:false)
+        contentType(nullable: false,blank: false)
     }
 
 }

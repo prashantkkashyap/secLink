@@ -99,6 +99,7 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+        uploadFolder =  "/"
     }
     production {
         grails.logging.jul.usebridge = false
@@ -106,7 +107,8 @@ environments {
     }
     qa{
         grails.logging.jul.usebridge = true
-         grails.serverURL = "http://prashant.qa6.intelligrape.net"
+        grails.serverURL = "http://prashant.qa6.intelligrape.net"
+        uploadFolder ="/"
     }
 }
 

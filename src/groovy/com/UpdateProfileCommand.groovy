@@ -13,7 +13,7 @@ class UpdateProfileCommand {
     Byte photo
 
     static constraints = {
-        photo(nullable: false)
+        photo(nullable: true)
         userName(blank: false, unique: true, maxSize: 20)
         firstName(maxSize: 15)
         lastName(maxSize: 15)

@@ -20,7 +20,7 @@ class User {
     static constraints = {
         email(blank: false,unique: true, email: true)
         password(blank: false, size:8..15)
-        photo(nullable: false)
+        photo(nullable: true)
         userName(blank: false, unique: true, maxSize: 20)
         firstName(maxSize: 15)
         lastName(maxSize: 15)

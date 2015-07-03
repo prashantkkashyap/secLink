@@ -1,7 +1,7 @@
 <g:each in="${subscribedUsers}" var="user" >
 <div class="inner-container"  style="border: 1px solid #000000;">
     <div>
-    <img src="${resource(dir: 'images' , file: 'businessman.jpg')}" />
+        <img src="${resource(dir:'images', file: "/userImage/${user.userName}")}"/>
     </div>
     <ul>
         <li>${user.firstName} ${user.lastName}</li>

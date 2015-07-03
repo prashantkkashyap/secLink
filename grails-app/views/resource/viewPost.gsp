@@ -42,8 +42,8 @@
 
     img{
         margin: 0%;
-        height:25px;
-        width:25px;
+        height:40px;
+        width:40px;
     }
     ul{padding:0%;}
 
@@ -81,50 +81,7 @@
 <div>
     <div id="users">
         <g:render template="userInfo" model="${user}, ${userPost}"></g:render>
-        %{--<div class="inner-container">
-            <div><img src="${resource(dir: 'images' , file: 'businessman.jpg')}"/></div>
-            <ul>
-                <li>${userPost.createdBy.firstName}</li>
-                <li>${userPost.topic.name}</li>
-            </ul>
-            <ul>
-                <li>@${userPost.createdBy.userName}</li>
-                <li>${userPost.dateCreated}</li>
-                <div class="navbar-form navbar-right" style="margin-top: 5%;">
-                    <div class="btn-group">
-                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Rating <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <g:link controller="resourceRatings" action="resourceRatings" id="${userPost.id}" params="[rating:1]">1</g:link>
-                            </li>                <li>
-                            <g:link controller="resourceRatings" action="resourceRatings" id="${userPost.id}" params="[rating:2]">2</g:link>
-                        </li>
-                            <li>
-                                <g:link controller="resourceRatings" action="resourceRatings" id="${userPost.id}" params="[rating:3]">3</g:link>
-                            </li>
-                            <li>
-                                <g:link controller="resourceRatings" action="resourceRatings" id="${userPost.id}" params="[rating:4]">4</g:link>
-                            </li>
-                            <li>
-                                <g:link controller="resourceRatings" action="resourceRatings" id="${userPost.id}" params="[rating:5]">5</g:link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </ul>
-            <div><p>${userPost.description}</p></div>
-            <ul>
-                <li><img src="${resource(dir: 'images',file:'facebook.jpg')}"></li>
-                <li><img src="${resource(dir:'images', file:'twitter.jpg')}"></li>
-                <li><img src="${resource(dir:'images', file:'gplus.png')}"></li>
 
-                <g:if test="${userPost.instanceOf(com.linksharing.LinkResource)}">
-                    <li class="navbar-form navbar-right"><g:link>View full site</g:link></li>
-                </g:if> <g:elseif test="${userPost.instanceOf(com.linksharing.DocumentResource)}">
-                <li class="navbar-form navbar-right"><g:link>Download</g:link></li>
-            </g:elseif>
-            </ul>
-        </div>--}%
     </div>
 </div>
 </body>

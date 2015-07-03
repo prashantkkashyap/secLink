@@ -1,5 +1,7 @@
 <div class="inner-container">
-    <div><img src="${resource(dir: 'images' , file: 'businessman.jpg')}"/></div>
+    <div>
+        <img src="${resource(dir:'images', file: "/userImage/${user.userName}")}"/>
+    </div>
     <ul>${user.firstName} ${user.lastName}</ul>
         <div>@ ${user.userName}</div>
         <ul>

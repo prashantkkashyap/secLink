@@ -18,6 +18,13 @@
     %{--<script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
     <script rel=" script" src="${resource(dir: 'js', file: 'jquery.dataTables.min.js')}"></script>
     <script rel="script" src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
+<style>
+img{
+    margin-right: 1%;
+    height:40px;
+    width:40px;
+}
+</style>
 
     <script >
         $(document).ready(function(){

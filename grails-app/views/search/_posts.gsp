@@ -2,7 +2,10 @@
 <g:each in="${topPosts}" var="topPost">
 <div class="inner-container" style="border:1px #000000 solid;">
     <div>
-        <img src="${resource(dir:'images', file: 'businessman.jpg')}"/>
+        %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
+            <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
+        </g:if>--}%
+        <img src="${resource(dir: 'images',file: "/userImage/${topPost.createdBy.userName}")}" />
     </div>
     <div>${topPost.description}</div>
     <ul>

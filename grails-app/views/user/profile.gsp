@@ -21,12 +21,12 @@
     body {font-family: Helvetica,Arial; font-size:12px;}
 
     form label {display:inline-block ; width:100%;}
-    #editTopics{margin:2% 2% 0% 2%; padding:0%;width:40%;height:auto;border:1px solid black;float: none;}
+    #editTopics{margin:2% 2% 0% 2%; padding:0%;width:43%;height:auto;border:1px solid black;float: none;}
     #changePassword{margin:2% 2% 2% 2%; padding:0%;width:50%;height:auto;border:1px solid black;
         float: right;clear:both;}
     #editProfile{margin:0% 2% 0% 2%; padding:0%;width:50%;height: auto; border:1px solid black;
         float: right;clear: both; }
-    .userDiv{margin:7% 0% 0% 2%; padding:0%;width:40%;height:auto;border:1px solid black;}
+    .userDiv{margin:7% 0% 0% 2%; padding:0%;width:43%;height:auto;border:1px solid black;}
     .inner-container{margin:2%; padding:2%;text-align:left;}
     input[type="email"],input[type="password"]{width:160px;}
 
@@ -46,8 +46,8 @@
 
     img{
         margin-right: 1%;
-        height:25px;
-        width:25px;
+        height:40px;
+        width:40px;
     }
     ul li {
         list-style-type: none;

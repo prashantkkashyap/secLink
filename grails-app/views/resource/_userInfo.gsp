@@ -1,6 +1,12 @@
 <%@ page import="com.linksharing.DocumentResource; com.linksharing.LinkResource" %>
 <div class="inner-container">
-    <div><img src="${resource(dir: 'images' , file: 'businessman.jpg')}"/></div>
+    <div>
+        %{--<g:if test="${user.photo ==null}">
+            <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
+        </g:if>--}%
+
+        <img src="${resource(dir: 'images',file: "/userImage/${userPost.createdBy.userName}")}" />
+    </div>
     <ul>
         <li>${userPost.createdBy.firstName}</li>
         <li><g:link controller="topic" action="showTopic" id="${userPost.id}">${userPost.topic.name}</g:link></li>
@@ -54,7 +60,7 @@
            <g:if test="${session['user']}">
            <li class="navbar-form navbar-right">
            %{-- <a data-toggle="modal" href="javascript:void(0)">--}%
-               <g:if test="${userPost.createdBy.id == user.id ||  user.isAdmin() == true}">
+               <g:if test="${userPost.createdBy.id == user.id ||  user.admin == true}">
                    <g:link controller="topic" action="topicDelete" id="${userPost.id}">
                        <img src="${resource(dir:'images',file:'delete.jpg')}"/>
                    </g:link>
@@ -63,7 +69,7 @@
            </li>
 
            <li class="navbar-form navbar-right">
-               <g:if test="${userPost.createdBy.id == user.id ||  user.isAdmin() == true}">
+               <g:if test="${userPost.createdBy.id == user.id ||  user.admin == true}">
                    <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
                        <img src="${resource(dir:'images',file:'edit.png')}"/>
                    </a>

@@ -4,7 +4,7 @@
 <div class="inner-container" style="border: 1px solid #000000;">
         <div>
             <div>
-                <img src="${resource(dir:'images', file: 'businessman.jpg')}"/>
+                <img src="${resource(dir:'images', file: "/userImage/${resourceList.createdBy.userName}")}"/>
             </div>
             <ul>
                 <li>${resourceList.topic.name}</li>

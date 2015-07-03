@@ -2,7 +2,7 @@
 
 <div class="inner-container">
     <div>
-        <img src="${resource(dir:'images', file: 'businessman.jpg')}"/>
+        <img src="${resource(dir:'images', file: "/userImage/${topic.createdBy.userName}")}"/>
     </div>
     <div>
         <ul>

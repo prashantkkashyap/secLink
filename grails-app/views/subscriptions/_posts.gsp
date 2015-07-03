@@ -1,8 +1,7 @@
 <%@ page import="com.linksharing.ReadingItem; com.linksharing.DocumentResource; com.linksharing.LinkResource" %>
 
 <div class="heading" >
-    <span style="margin: 2% 0% 0% 5%; border: 1px dotted #000000;">Posts: ${topicResourceList.topic.name[0]}</span>
-        <div class="right" style=" margin-right:2.5%;width: 60%; vertical-align: middle;">
+    <div class="right" style=" margin-right:2.5%;width: 60%; vertical-align: middle;">
             <g:form controller="search" action="postSearch" class="navbar-form navbar-right">
                 <div class="form-group">
                     <input class="form-control"  type="search"  name="query" value="${params.query}" placeholder="Search"  />
@@ -10,11 +9,17 @@
                     <g:submitButton name="search"></g:submitButton>
                 </div>
             </g:form>
-        </div>
+    </div>
+    <div style="margin: 2% 0% 0% 2%;  vertical-align: middle; width: 40%;">Posts: ${topicResourceList.topic.name[0]}</div>
 </div>
 <g:each in="${topicResourceList}" var="topicResourceLists">
     <div class="inner-container" style="border:1px #000000 solid;">
-        <div><img src="${resource(dir:'images', file: 'businessman.jpg')}"/></div>
+        <div>
+            %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
+                <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
+            </g:if>--}%
+            <img src="${resource(dir: 'images',file: "/userImage/${topicResourceLists.createdBy.userName}")}" />
+        </div>
         <div>${topicResourceLists.description}</div>
         <ul>
             <li><img src="${resource(dir: 'images',file:'facebook.jpg')}"></li>

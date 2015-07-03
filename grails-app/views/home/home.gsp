@@ -108,7 +108,7 @@
                  Login as : ${session["user"]}  | <g:link action="logout">Logout</g:link>
                 </g:if>
                 <g:else>
-                    <g:form controller="login" action="loginHandler">
+                    <g:uploadForm controller="login" action="loginHandler">
                         <div class="line">
                             <lable for="email">Email:&nbsp;&nbsp;</lable>
                             <input type="email" id="email" name="email"/>
@@ -124,7 +124,7 @@
                         <div class="line">
                             <a href="" target="_blank">Forgot password</a>
                         </div>
-                    </g:form>
+                    </g:uploadForm>
                 </g:else>
             </div>
     </div>
@@ -137,7 +137,7 @@
                     <g:renderErrors bean="${user}"/>
                 </div>
             </g:hasErrors>
-            <g:form controller="user" action="registerHandler" enctype="multipart/form-data">
+            <g:uploadForm controller="user" action="registerHandler" enctype="multipart/form-data">
                 <fieldset>
                     <div class="line">
                         <label for="firstName">First Name: </label>
@@ -161,21 +161,21 @@
                     <div class="line">
                         <label for="password">Password*: </label>
                         <g:passwordField name="password"
-                                         class="${hasErrors(bean:registerVlaidatorCO,field:'password','errors')}" />
+                                         class="${hasErrors(bean:registerHandler,field:'password','errors')}" />
                     </div>
                     <div class="line">
                         <label for="confirm">Confirm Password*: </label>
                         <g:passwordField name="confirm"
-                                         class="${hasErrors(bean:registerVlaidatorCO,field:'password','errors')}" />
+                                         class="${hasErrors(bean:registerHandler,field:'password','errors')}" />
                     </div>
                     <div class="line"><label for="image">Photo</label>
                         <input type="file" id="image" name="image">
                     </div>
                     <div class="line">
-                        <g:submitButton name="submitButton" value="User Registration" />
+                        <g:submitButton name="submitButton" value="Register" />
                     </div>
                 </fieldset>
-            </g:form>
+            </g:uploadForm>
         </div>
     </div>
         <div id="recent-shares">

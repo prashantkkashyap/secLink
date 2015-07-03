@@ -7,13 +7,13 @@ import grails.validation.Validateable
  */
 @Validateable
 class UpdateProfileCommand {
+    String userName
     String firstName
     String lastName
-    String userName
-    byte[] photo
+    Byte photo
 
     static constraints = {
-        photo(nullable: true, max:1024*20)
+        photo(nullable: false)
         userName(blank: false, unique: true, maxSize: 20)
         firstName(maxSize: 15)
         lastName(maxSize: 15)

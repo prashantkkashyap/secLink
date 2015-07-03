@@ -4,7 +4,12 @@
 <g:each in="${unreadResources}" var="unreadResource">
 
     <div class="inner-container" style="border:1px #000000 solid;" xmlns="http://www.w3.org/1999/html">
-        <div><img src="${resource(dir:'images', file: 'businessman.jpg')}"/></div>
+        <div>
+            %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
+                <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
+            </g:if>--}%
+            <img src="${resource(dir: 'images',file: "/userImage/${unreadResource.createdBy.userName}")}" />
+        </div>
           <ul>
               <li>${unreadResource.createdBy.userName}</li>
               <li class="liStyle">@${unreadResource.createdBy.firstName}</li>

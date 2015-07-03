@@ -27,7 +27,7 @@
     form .line{padding:1%}
     form .line.submit{tet-align:right;}
     .header-heading{font-size:32px;margin:0%;padding:0%;}
-    .heading{font-size:16px;font-weight: bold;border: 1px solid #000000;background-color: #5cb85c;width: auto;height:6%;}
+    .heading{font-size:16px;font-weight: bold;border: 1px solid #000000;background-color: #5cb85c;width: auto;height:8%;}
     .right {
         float: right;
         clear: both;
@@ -35,8 +35,8 @@
 
     img{
         margin-right: 1%;
-        height:25px;
-        width:25px;
+        height:40px;
+        width:40px;
     }
     ul{padding:0%;}
     ul li
@@ -61,7 +61,10 @@
             <g:each in="${topicListsCreatedByUser}" var="topicLists">
             <div class="inner-container">
                 <div>
-                    <img src="${resource(dir:'images', file: 'businessman.jpg')}"/>
+                    %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
+                        <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
+                    </g:if>--}%
+                    <img src="${resource(dir: 'images',file: "/userImage/${topicLists.createdBy.userName}")}" />
                 </div>
                 <div>
                     <ul>

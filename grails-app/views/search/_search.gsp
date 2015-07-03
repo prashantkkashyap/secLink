@@ -3,7 +3,11 @@
 <g:each in="${listTopicPost}" var="listTopic">
     <div class="inner-container" style="border:1px #000000 solid;">
         <div>
-            <img src="${resource(dir:'images', file: 'businessman.jpg')}"/>
+            %{--<g:if test="${user.photo ==null}">
+                <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
+            </g:if>--}%
+
+            <img src="${resource(dir: 'images',file: "/userImage/${listTopic.createdBy.userName}")}" />
         </div>
         <div>
             <ul>

@@ -1,4 +1,4 @@
-${publicTopic.size()}
+%{--${publicTopic.size()}--}%
 <g:each in="${publicTopic}" var="publicTopics">
 <div class="inner-container">
     <div >

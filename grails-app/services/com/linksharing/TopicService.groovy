@@ -11,7 +11,7 @@ class TopicService {
 
         def topic = Topic.get(params.id)
 
-       if(topic.createdBy?.id == user.id || user.isAdmin() == true){
+       if(topic.createdBy?.id == user.id || user.admin == true){
            topic.delete(flush: true)
        }
     }

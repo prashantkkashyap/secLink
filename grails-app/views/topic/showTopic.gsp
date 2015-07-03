@@ -44,8 +44,8 @@
 
     img{
         margin-right: 1%;
-        height:25px;
-        width:25px;
+        height:40px;
+        width:40px;
     }
     ul{padding:0%;}
     ul li

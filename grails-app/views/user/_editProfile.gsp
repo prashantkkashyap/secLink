@@ -1,5 +1,5 @@
 <div class="inner-container">
-    <g:form controller="user" action="updateUserProfile">
+    <g:uploadForm controller="user" action="updateUserProfile" enctype="multipart/form-data">
         <fieldset>
             <div class="line">
                 <label for="firstName">First Name: </label>
@@ -16,11 +16,11 @@
                  <input type="text" name="userName" id="userName"/>
              </div>
                 <div class="line"><label for="image">Photo</label>
-                <input type="file" id="image">
+                <input type="file" id="image" name="image">
             </div>
             <div class="line">
                 <g:submitButton name="submitButton" value="Update" />
             </div>
          </fieldset>
-    </g:form>
+    </g:uploadForm>
 </div>

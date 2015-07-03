@@ -2,7 +2,6 @@ package com.linksharing
 
 import com.UpdateProfileCommand
 import com.Visibility
-import grails.validation.Validateable
 
 class UserController {
     def emailService
@@ -100,7 +99,7 @@ class UserController {
 
         //User & Topics Section
         List<Topic> publicTopic = new ArrayList<Topic>()
-        if (!user.isAdmin()) {
+        if (!user.admin) {
             publicTopic = Topic.findAllByCreatedByAndVisibility(user, Visibility.PUBLIC).each { it}
         } else {
             publicTopic = Topic.list()
@@ -139,7 +138,6 @@ class UserController {
 
     }
 
-
     def updateUserProfile(UpdateProfileCommand updateProfileCO) {
         render(params)
         User user = User.get(session['userId'])
@@ -149,7 +147,10 @@ class UserController {
         user.firstName = updateProfileCO.firstName
         user.lastName = updateProfileCO.lastName
         user.userName = updateProfileCO.userName
-        user.photo = updateProfileCO.photo
+        String path = grailsApplication.mainContext.servletContext.getRealPath("images/userImage")
+        File file = new File("${path}/${user.userName}")
+        file.bytes=params.image.bytes;
+        //user.photo = updateProfileCO.photo
         user.save(flush: 'true', failOnError: 'true')
         redirect(controller: 'user', action: 'profile')
     }
@@ -165,23 +166,22 @@ class UserController {
         }
         redirect(controller: 'user', action: 'Profile')
 
-        /* def user = User.get(params.userId)
-         user.password = params.newPassword
-         if (!user.save())
-             render view: 'updateUserPassword', model: [user: user]
-         return*/
     }
 
     def registerHandler() {
-        render params
+       params
         User u = User.findByEmail(params.email)
+
         if (u) {
             flash.message = "EmailID already exits ${params.email}"
             redirect(controller: 'home', action: 'home')
         } else if (params.password != params.confirm) {
             flash.message = "Password do not match"
             redirect(controller: 'home', action: 'home')
-        } else if (request.method == 'POST') {
+        } else if (request.method=='POST') {
+           /* MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request;
+            CommonsMultipartFile image = (CommonsMultipartFile)mpr.getFile("image");*/
+           // println(image.properties)
             User user = new User(params)
             user.firstName = params.firstName
             user.lastName = params.lastName
@@ -189,32 +189,41 @@ class UserController {
             user.userName = params.userName
             user.password = params.password
             user.confirm = params.confirm
-            user.photo = params.fileName
+           // user.photo.name = params.userName
             user.active = true
             user.admin = false
+            String path = grailsApplication.mainContext.servletContext.getRealPath("images/userImage")
+            File file = new File("${path}/${user.userName}")
+            file.bytes=params.image.bytes;
+
+           /* if(request instanceof MultipartHttpServletRequest) {
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request;
+                CommonsMultipartFile image = (CommonsMultipartFile)mpr.getFile("image");
+                user.photo = image?.getBytes()
+            }*/
 
             user.save(flush: true, failOnError: true)
             session['userId'] = user.id
             println "=============" + user.id + "====================="
+            /*def webRootDir = grailsApplication.config.uploadFolder
+            def userDir = new File(webRootDir,"/image/${user.id}")
+            userDir.mkdirs()
+            image.transferTo( new File(userDir, image.originalFilename))*/
             redirect(controller: 'dashboard', action: 'dashboard')
         }
     }
     /*def commandObj {RegisterValidatorCommand registerVlaidatorCO ->
     redirect (controller: 'home', action:'home')
     }*/
-     def imageUpload() {
-         def fileInstance = new File(params)
-         def uploadedFile = request.getFile("image")
-         fileInstance.image = uploadedFile.getBytes() //converting the file to bytes
-         fileInstance.fileName = uploadedFile.originalFilename //getting the file name from the uploaded file
-         fileInstance.fileType = uploadedFile.contentType//getting and storing the file type
-         fileInstance.save() //Create the record in DB by sending the needed Select command
-    }
-    def showImage() {
-        def fileInstance = File.get(params.id)
-        response.outputStream << fileInstance.image // write the image to the outputstream
+/*
+    def viewImage() {
+
+        def userImage = User.get(params.id)
+        println userImage.photo
+        Byte[] image = userImage.photo
+        response.outputStream << image // write the image to the outputstream
         response.outputStream.flush()
-    }
+    }*/
 
     class RegisterValidatorCommand {
         String password

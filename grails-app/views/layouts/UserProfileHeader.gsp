@@ -15,10 +15,6 @@
     <script rel="script" src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
 
     <style type="text/css">
-    img{
-        height:25px;
-        width:25px;
-    }
     ul li {
         list-style-type: none;
         display: inline-block;
@@ -47,7 +43,11 @@
                 <ul class="navbar-form navbar-left">
                     <li>
                         <g:link controller="user" action="showUser">
-                            <img src="${resource(dir:'images', file: 'businessman.jpg')}" />
+                               %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
+                               <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
+                                </g:if>--}%
+                                <img src="${resource(dir: 'images',file: "/userImage/${user.userName}")}" />
+
                         </g:link>
                     </li>
                     <li style="color: #ffffff;"><g:link controller="user" action="showUser"><appTag:userFullName></appTag:userFullName></g:link></li>

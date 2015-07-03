@@ -13,8 +13,8 @@ class BootStrap {
     def init = { servletContext ->
 
        /* createUser()
-        createTopic()*/
-        /*createResources()
+        createTopic()
+        createResources()
         createReadingItems()
         createResourceRatings()
         subscribeTopic()*/
@@ -49,7 +49,6 @@ class BootStrap {
             topic.save(flush: true)
          }
 */
-/*
     def createUser() {
 
         User user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", userName: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], admin: true, active: true)
@@ -60,6 +59,7 @@ class BootStrap {
 
         println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $User.count")
     }
+/*
 
     def createTopic() {
         Topic user1t1 = new Topic(name: "java1", visibility: Visibility.PRIVATE)
@@ -87,9 +87,9 @@ class BootStrap {
                 .addToTopics(user2t4)
                 .addToTopics(user2t5)
                 .save(flush: true, failOnError: true) ?: println("Error to add topic2")
-    }*/
+    }
 
-    /*def createResources() {
+    def createResources() {
         Topic.list().eachWithIndex { topic, index ->
             5.times {
                 // CreateLink resource
@@ -177,7 +177,8 @@ class BootStrap {
         }
     def subscribeTopic(){
 
-   }*/
+   }
     def destroy = {
     }
+*/
 }

@@ -2,12 +2,13 @@
 <g:each in="${publicTopicResource}" var="publicTopicResources">
 <div class="inner-container">
         <div>
-            <div>
-                <img src="${resource(dir:'images', file: 'businessman.jpg')}"/>
-            </div>
+            %{--<div>
+                <img src="${resource(dir:'images', file: "/userImage/${publicTopicResources.createdBy.userName}")}"/>
+            </div>--}%
                 <div><g:link controller="topic" action="showTopic" id="${publicTopicResources.topic.id}">${publicTopicResources.topic.name}</g:link></div>
-            <div>${publicTopicResources}</div>
-            ${publicTopicResources.readingitems.isRead}
+            <div style="margin-top:2%; ">${publicTopicResources}</div>
+            %{--${publicTopicResources.readingitems.isRead}--}%
+            <div style="margin-top:2%;">
                 <ul>
                     <li><img src="${resource(dir: 'images',file:'facebook.jpg')}"></li>
                     <li><img src="${resource(dir:'images', file:'twitter.jpg')}"></li>
@@ -24,6 +25,7 @@
                         <li class="navbar-form navbar-right"><g:link>Download</g:link></li>
                      </g:elseif>
                 </ul>
+        </div>
         </div>
 </div>
 </g:each>

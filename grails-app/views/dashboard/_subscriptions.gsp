@@ -2,7 +2,10 @@
 <g:each in="${subscriptionUserTopicList}" var="totalSubscriptionUserTopic">
     <div class="inner-container" style="border:1px #000000 solid;">
         <div>
-            <img src="${resource(dir:'images', file: 'businessman.jpg')}"/>
+            %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
+                <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
+            </g:if>--}%
+            <img src="${resource(dir: 'images',file: "/userImage/${totalSubscriptionUserTopic.createdBy.userName}")}" />
         </div>
             <div id="subscriptionBorder" >
                 <ul>
@@ -30,7 +33,7 @@
                     </li>
                     <li>
                         <div class="line">
-                            <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.isAdmin() == true}">
+                            <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
                                 <g:form name='visibility' controller="topic"  id="${totalSubscriptionUserTopic.id}" action="topicVisibility">
                                     <g:select name="visibility" onchange="this.form.submit()" from="${com.Visibility}" value="${totalSubscriptionUserTopic.visibility}"/>
                                     <noscript><input type="submit" value="submit"></noscript>
@@ -42,7 +45,7 @@
                         <img  src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/></a>
                     </li>
                     <li>
-                    <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.isAdmin() == true}">
+                    <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
                         <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
                             <img src="${resource(dir:'images',file:'edit.png')}"/>
                         </a>
@@ -50,7 +53,7 @@
                     </li>
                     <li>
                        %{-- <a data-toggle="modal" href="javascript:void(0)">--}%
-                        <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.isAdmin() == true}">
+                        <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
                             <g:link controller="topic" action="topicDelete" id="${totalSubscriptionUserTopic.id}">
                               <span> <img src="${resource(dir:'images',file:'delete.jpg')}"/></span>
                             </g:link>

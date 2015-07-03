@@ -29,9 +29,8 @@
     form input[type="email"] {width:160px;}
     form .line{padding:1%}
     form .line.submit{tet-align:right;}
-    .heading{font-size:16px;font-weight: bold;border: 1px solid #000000;background-color: #5cb85c;width: auto;height:6%;
-
-    }
+    .heading{font-size:16px;font-weight: bold;border: 1px solid #000000;background-color: #5cb85c;width: auto;height:8%;
+        vertical-align: middle;}
     .right {
         float: right;
     }
@@ -39,8 +38,8 @@
 
     img{
         margin-right: 1%;
-        height:25px;
-        width:25px;
+        height:40px;
+        width:40px;
     }
     ul li {
         list-style-type: none;

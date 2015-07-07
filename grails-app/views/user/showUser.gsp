@@ -59,23 +59,64 @@
     }
 
     </style>
+    <script>
+        $(document).ready(function(){
+           $("#searchTopic").click(function(){
+               console.log("sumi");
+/*               var query={
+                   'query' : $('input[query=query]').val()
+               }*/
+               var txt = $('#searchBox').val();
+               $.ajax({
+                   url: "${createLink(controller: 'user',action: 'topicSearch')}",
+                   method: "post",
+                   data:{txt:txt},
+                   success: function(data){
+                       //console.log("ssssssssssssssssssssss"+data);
+                       $("#topicSearchList").empty();
+                       $("#topicSearchList").html(data);
+                      // console.log("sucess............")
+                   }
+               });
+           })
+            $("#searchPost").click(function(){
+                      /*               var query={
+                 'query' : $('input[query=query]').val()
+                 }*/
+                var txt = $('#searchPostBox').val();
+                $.ajax({
+                    url: "${createLink(controller: 'user',action: 'postsSearch')}",
+                    method: "post",
+                    data:{txt:txt},
+                    success: function(data){
+                        //console.log("ssssssssssssssssssssss"+data);
+                        $("#postSearch").empty();
+                        $("#postSearch").html(data);
+                        // console.log("sucess............")
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <div>
     <div id="posts" class="right">
         <div class="heading">
             <div class="right" style=" margin-right:3.5%;">
-                <g:form controller="search" action="postsSearch" class="navbar-form navbar-right">
+                <g:form class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input class="form-control"  type="search"  name="query" value="${params.query}" placeholder="Search"  />
+                        <input class="form-control" type="search"  name="query" value="${params.query}" placeholder="Search" id="searchPostBox"  />
                        %{-- <input type="hidden" name="topicId" value="${publicTopicResource.topic.id}">--}%
-                        <g:submitButton name="search"></g:submitButton>
+                        <input type="button" value="Search" id="searchPost" onchange="" name="search"/>
                     </div>
                 </g:form>
             </div>
             <div class="headingContentDiv">Posts</div>
         </div>
+        <div id="postSearch">
         <g:render template='posts' model="${publicTopic},${publicTopicResource}"></g:render>
+        </div>
     </div>
 </div>
 <div>
@@ -87,17 +128,21 @@
     <div id="topic" >
         <div class="heading">
             <div style=" margin-right:3.5%;">
-                <g:form controller="search" action="topicSearch" class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input class="form-control"  type="search"  name="query" value="${params.query}" placeholder="Search"  />
+                        <input class="form-control"type="search"  name="query" value="${params.query}" placeholder="Search" id="searchBox" />
                         %{--<input type="hidden" name="topicId" value="${publicTopic.id}">--}%
-                        <g:submitButton name="search"></g:submitButton>
+                        <input type="button" id="searchTopic" value="Search" name="search"/>
                     </div>
-                </g:form>
+                </form>
             </div>
             <div class="headingContentDiv">Topics</div>
         </div>
-        <g:render template="topics" model="${publicTopic}" ></g:render>
+
+        <div id="topicSearchList">
+       %{-- <g:render template="/template/topics" model="${topicSearchList}" ></g:render>--}%
+       <g:render template="topics" model="${publicTopic}" ></g:render>
+        </div>
     </div>
 </div>
 

@@ -62,7 +62,7 @@ img{
                    <li style="float: right;vertical-align: middle;margin: 1%;">
                        <div class="dropdown">
                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                               User   <span class="caret"></span>
+                             User <span class="caret"></span>
                            </button>
                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                <li class="user" val="all"><a href="javascript:void(0)">All User</a></li>
@@ -71,7 +71,7 @@ img{
                            </ul>
                        </div>
                    </li>
-                   <li><h3>Users</h3></li>
+                   <li><h3><g:link controller="user" action="list" style="color: white">Users</g:link></h3></li>
 
                   %{-- <li style="vertical-align: middle;">
                        <g:form controller="search" action="userSearch   " class="navbar-form navbar-right">

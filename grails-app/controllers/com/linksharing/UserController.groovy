@@ -8,6 +8,7 @@ class UserController {
     def topicService
     def readingItemService
     def adminService
+    def searchService
 
     def emailInvitation() {
         User user = User.findById(session['userId'])
@@ -91,9 +92,6 @@ class UserController {
         redirect(controller: 'user', action: 'list')
     }
 
-
-
-
     def showUser() {
         User user = User.get(session['userId'])
 
@@ -111,9 +109,24 @@ class UserController {
             publicTopicResource.add(des)
         }
         publicTopicResource = publicTopicResource.flatten()
-        println publicTopicResource.topic.id
+        publicTopicResource.topic.id
+
 
         render(view: 'showUser', model: [user: user, publicTopic: publicTopic, publicTopicResource: publicTopicResource])
+    }
+    def topicSearch(){
+        User user = User.get(session['userId'])
+         params.txt
+        def topicSearchList = searchService.topicSearchMethod(params.txt,user)
+       println topicSearchList
+        render(template: '/template/topics' ,model: [topicSearchList:topicSearchList])
+    }
+    def postsSearch(){
+        User user = User.get(session['userId'])
+       println params
+        def postSearchList = searchService.postsSearchMethod(params,user)
+       // println(postSearchList)
+        render(template: '/template/posts', model: [postSearchList:postSearchList])
     }
 
     def profile() {

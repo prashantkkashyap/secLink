@@ -44,8 +44,9 @@ class SearchController {
         def postSearchList = searchService.postsSearchMethod(params)
     }
     def topicSearch(){
-    params
-        def topicSearchList = searchService.topicSearhcMethod(params)
+    println params
+        def topicSearchList = searchService.topicSearchMethod(params)
+        render(template:'/template/topics' ,model: [topicSearchList:topicSearchList])
     }
 
     def trendingTopics(){

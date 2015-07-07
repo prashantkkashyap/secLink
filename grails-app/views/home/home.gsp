@@ -10,6 +10,7 @@
     <link rel="stylesheet" href=${resource(dir:'css',file: 'bootstrap.min.css')} >
     <link  rel="stylesheet" href=${resource(dir: 'css',file: 'signin.css')} >
     <link type="text/css" rel="stylesheet" href="${resource(dir:'css',file: 'header.css')}">
+    <script rel="script" src="${resource(dir: 'js',file: 'formValidation.js')}"></script>
 
  <style type="text/css">
    body {font-family: Helvetica,Arial; font-size:12px;}
@@ -110,12 +111,12 @@
                 <g:else>
                     <g:uploadForm controller="login" action="loginHandler">
                         <div class="line">
-                            <lable for="email">Email:&nbsp;&nbsp;</lable>
-                            <input type="email" id="email" name="email"/>
+                            <lable for="email" >Email:&nbsp;&nbsp;</lable>
+                            <input type="email" id="email" name="email" required/>
                         </div>
                         <div class="line">
                             <lable for="password">Password*:&nbsp;&nbsp;</lable>
-                            <input type="password" id="password" name="password"/>
+                            <input type="password" id="password" name="password" required/>
                         </div>
                         <div class="line">
                             <lable for="login"></lable>
@@ -137,20 +138,20 @@
                     <g:renderErrors bean="${user}"/>
                 </div>
             </g:hasErrors>
-            <g:uploadForm controller="user" action="registerHandler" enctype="multipart/form-data">
+            <g:uploadForm onsubmit="return formValidation()" name="registration" controller="user" action="registerHandler" enctype="multipart/form-data">
                 <fieldset>
                     <div class="line">
                         <label for="firstName">First Name: </label>
                         <g:textField name="firstName" value="${user?.firstName}"
-                                     class="${hasErrors(bean:user,field:'firstName','errors')}" />
+                                     class="${hasErrors(bean:user,field:'firstName','errors')}"  />
                     </div>
                     <div class="line">
-                        <label for="lastName">Last Name: </label>
+                        <label for="lastName" >Last Name: </label>
                         <g:textField name="lastName" value="${user?.lastName}"
                                      class="${hasErrors(bean:user,field:'lastName','errors')}" />
                     </div>
                     <div class="line">
-                        <label for="email">Email*: </label>
+                        <label for="email" >Email*: </label>
                         <g:textField name="email" value="${user?.email}"
                                      class="${hasErrors(bean: user,field: 'email','errors')}"/>
                     </div>

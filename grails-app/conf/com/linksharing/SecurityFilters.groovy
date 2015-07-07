@@ -9,6 +9,7 @@ class SecurityFilters {
                     redirect(controller: 'user', action: 'register')
                     return false
                 }*/
+              //  println(controllerName+ " " + actionName)
 
             }
             after = { Map model ->

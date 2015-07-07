@@ -43,27 +43,54 @@ class SearchService {
        // println(postSerachList)
         [postSerachList:postSerachList]
     }
-    def postsSearchMethod(def params){
+    def postsSearchMethod(def params,User user){
         def postSerachList = []
       //  long topicId = Long.parseLong(params.topicId)
 
-        postSerachList= Resource.createCriteria().listDistinct{
-            ilike('description',"%${params.query}%")
+        if(user.admin==true){
+            postSerachList= Resource.createCriteria().listDistinct{
+                or{
+                    ilike('description',"%${params.txt}%")
+                    "topic"{
+                        ilike('name',"%${params.txt}%")
+                    }
+                }
+            }
+        }else{
+            postSerachList= Resource.createCriteria().listDistinct{
+               or{
+                ilike('description',"%${params.txt}%")
+                   and{
+                "topic"{
+                    ilike('name',"%${params.txt}%")
+                    eq('visibility',Visibility.PUBLIC)
+                }
+                }
+               }
+            }
         }
        // println(postSerachList)
-        [postSerachList:postSerachList]
+        postSerachList
     }
 
-   def topicSearhcMethod (def params){
+   def topicSearchMethod (String txt, User user){
         def topicSearchList=[]
        //long topicId = Long.parseLong(params.topicId)
-       topicSearchList = Topic.createCriteria().listDistinct {
-            and {
-                   ilike("name","%${params.query}%")
-                    eq('visibility', Visibility.PUBLIC)
-            }
+       if (user.admin==true) {
+           topicSearchList = Topic.createCriteria().listDistinct {
+               ilike("name", "%${txt}%")
+           }
+
+       }else {
+           topicSearchList = Topic.createCriteria().listDistinct {
+               and {
+                   ilike("name", "%${txt}%")
+                   eq('visibility', Visibility.PUBLIC)
+               }
+           }
        }
-        [topicSearchList:topicSearchList]
+           topicSearchList
+
     }
 
     def userSearchMethod(def params, User user){

@@ -6,6 +6,7 @@ import com.Seriousness
 class SubscriptionsController {
 
     def subscriptionService
+    def searchService
 
     /*def subscriptionTopics() {
 
@@ -65,6 +66,13 @@ class SubscriptionsController {
         def updateSeriousness = subscriptionService.seriousnessMethod(params,user)
             redirect(controller: 'dashboard', action: 'dashboard')
         }
+    def postsSearch(){
+        User user = User.get(session['userId'])
+        println params
+        def postSearchList = searchService.particlrTopicPostSearchMethod(params,user)
+        // println(postSearchList)
+        render(template: 'posts', model: [topicResourceList:postSearchList, user:user])
+    }
 
 
 }

@@ -55,10 +55,12 @@
                     <img src="${resource(dir: 'images',file: "/userImage/${subscirbedTopics.createdBy.userName}")}" />
             </div>
             <div>
-                <form class="form-group">
-                    <g:textField name="name" style="visibility: visible;background-color: greenyellow;" controller="topic" value="${subscirbedTopics.name}" action="updateTopicName" id="${subscirbedTopics.id}">${subscirbedTopics.name}</g:textField>
-                    <g:submitButton name="save" value="Save"> </g:submitButton>
+                <div class="editTopicDiv" style="display: none;">
+                <form class="form-group" >
+                    <g:textField name="name" style="background-color: greenyellow;" controller="topic" value="${subscirbedTopics.name}" action="updateTopicName" id="${subscirbedTopics.id}">${subscirbedTopics.name}</g:textField>
+                    <g:submitButton  name="save" value="Save"> </g:submitButton>
                 </form>
+                </div>
                 <ul>${subscirbedTopics.createdBy.firstName}</ul>
                 <ul>
                     <li>Subscriptions</li>
@@ -90,9 +92,11 @@
                         <img  src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/></a>--}%
                     </li>
                     <li>
-                        <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
-                            <img src="${resource(dir:'images',file:'edit.png')}"/>
-                        </a>
+                        <g:if test="${subscirbedTopics.createdBy.id == user.id ||  user.admin == true}">
+                            <a data-toggle="modal" class="editDiv" href="javascript:">
+                                <img src="${resource(dir:'images',file:'edit.png')}"/>
+                            </a>
+                        </g:if>
                     </li>
                     <li>
                     %{-- <a data-toggle="modal" href="javascript:void(0)">--}%

@@ -46,7 +46,7 @@
                     </li>
                     <li>
                     <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
-                        <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
+                        <a data-toggle="modal" class="editDiv" href="javascript:">
                             <img src="${resource(dir:'images',file:'edit.png')}"/>
                         </a>
                     </g:if>
@@ -62,7 +62,7 @@
                     </li>
                 </ul>
             </div>
-        <div id="editTopicDiv" onclick="this.hidden" style="border-top: solid #000000 1px;">
+        <div class="editTopicDiv" style="border-top: solid #000000 1px;display: none;">
             <div style="margin: 4%;">
 
                 %{--<appTag:visibilityTag topic="${totalSubscriptionUserTopic}"></appTag:visibilityTag>--}%

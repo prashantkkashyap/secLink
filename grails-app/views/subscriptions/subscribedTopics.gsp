@@ -60,16 +60,56 @@
         margin-left: 11%;
     }
     </style>
+    <script>
+        $(document).ready(function(){
+            $("#searchPostParticlrTopic").click(function(){
+                /*               var query={
+                 'query' : $('input[query=query]').val()
+                 }*/
+                var txt = $('#searchPostParticlrTopicBox').val();
+                /* var txt = {
+                 query:$('input[query=query]').val()
+                 topicId : $('input[topicId=topicId]').val()
+                 }*/
+
+                $.ajax({
+                    url: "${createLink(controller: 'topic',action: 'postsSearch')}",
+                    method: "post",
+                    data:{txt:txt},
+                    success: function(data){
+                        $("#postParticlrTopicSearch").empty();
+                        $("#postParticlrTopicSearch").html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <div>
     <div id="posts" class="right">
+        <div class="heading" >
+            <div class="right" style=" margin-right:2.5%;width: 60%; vertical-align: middle;">
+                <g:form controller="search" action="postSearch" class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input class="form-control"  type="search"  name="query" value="${params.query}" placeholder="Search"  id="searchPostParticlrTopicBox"/>
+                        <input type="hidden" name="topicId" value="${topicResourceList.topic.id[0]}">
+                        <input type="button" id="searchPostParticlrTopic" value="Search" name="search">
+                    </div>
+                </g:form>
+            </div>
+            <div style="margin: 2% 0% 0% 2%;  vertical-align: middle; width: 40%;">Posts: ${topicResourceList.topic.name[0]}</div>
+        </div>
+        <div id="postParticlrTopicSearch">
         <g:render template='posts' model="${topicResourceList},${user}" ></g:render>
+        </div>
     </div>
 </div>
 <div>
     <div id="topics">
+        <div>
         <g:render template='topics' model="${subscribedList},${user}"></g:render>
+        </div>
     </div>
 </div>
 </body>

@@ -7,6 +7,7 @@ import com.TopicCommand
 class TopicController {
     def topicService
     def readingItemService
+    def searchService
 
     def topicDelete(){
         User user = User.get(session['userId'])
@@ -79,6 +80,13 @@ class TopicController {
         //render(params)
         def userTopics = topicService.updateTopic(params, user)
     redirect(controller: 'dashboard', action: 'dashboard')
+    }
+    def postsSearch(){
+        User user = User.get(session['userId'])
+        println params
+        def postSearchList = searchService.particlrTopicPostSearchMethod(params,user)
+        // println(postSearchList)
+        render(template: 'posts', model: [resourcesList:postSearchList])
     }
 
     def createTopicAndSubscribeCreator(TopicCommand topicCO) {

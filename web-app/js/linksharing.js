@@ -26,5 +26,8 @@ $(document).ready(function(){
             jQuery('#messageBox').css("display", "none")
         }, timeOut * 1000);
     }
+    $('.editDiv').click(function(){
+       $('.editTopicDiv').show()
+    });
 
 });

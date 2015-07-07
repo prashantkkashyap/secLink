@@ -29,7 +29,7 @@ class SearchService {
         }
     def postSearchMethod(def params){
         def postSerachList = []
-           // println(params.topicId.class)
+           println(params.topicId.class)
        long topicId = Long.parseLong(params.topicId)
 
         postSerachList= Resource.createCriteria().listDistinct{
@@ -41,8 +41,24 @@ class SearchService {
             }
         }
        // println(postSerachList)
-        [postSerachList:postSerachList]
+        postSerachList
     }
+    def particlrTopicPostSearchMethod(def params, User user){
+        def postSerachList = []
+       // println(params)
+        //long topicId = Long.parseLong(params.topicId)
+        postSerachList= Resource.createCriteria().listDistinct{
+                and{
+                    ilike('description',"%${params.txt}%")
+                    /*"topic"{
+                        idEq(topicId)
+                    }*/
+                }
+            }
+            // println(postSerachList)
+        postSerachList
+    }
+
     def postsSearchMethod(def params,User user){
         def postSerachList = []
       //  long topicId = Long.parseLong(params.topicId)

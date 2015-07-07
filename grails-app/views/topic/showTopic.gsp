@@ -16,6 +16,7 @@
     <script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
     <script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
     <script rel="script"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
+    <script rel="script"  src="${resource(dir: 'js',file: 'search.js')}"></script>
 
     <style type="text/css">
 
@@ -61,23 +62,49 @@
         margin-left: 11%;
     }
     </style>
+    <script>
+        $(document).ready(function(){
+            $("#searchPostParticlrTopic").click(function(){
+                /*               var query={
+                 'query' : $('input[query=query]').val()
+                 }*/
+                var txt = $('#searchPostParticlrTopicBox').val();
+               /* var txt = {
+                    query:$('input[query=query]').val()
+                    topicId : $('input[topicId=topicId]').val()
+                }*/
+
+                $.ajax({
+                    url: "${createLink(controller: 'topic',action: 'postsSearch')}",
+                    method: "post",
+                    data:{txt:txt},
+                    success: function(data){
+                        $("#postParticlrTopicSearch").empty();
+                        $("#postParticlrTopicSearch").html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <div>
     <div id="posts" class="right">
         <div class="heading">
             <div class="right" style=" margin-right:3.5%;">
-                <g:form controller="search" action="postSearch" class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input class="form-control"  type="search"  name="query" value="${params.query}" placeholder="Search"  />
+                        <input class="form-control"  type="search"  name="query" value="${params.query}" placeholder="Search" id="searchPostParticlrTopicBox"  />
                         <input type="hidden" name="topicId" value="${topic.id}">
-                        <g:submitButton name="search"></g:submitButton>
+                        <input type="button" id="searchPostParticlrTopic" value="Search" name="search">
                     </div>
-                </g:form>
+                </form>
             </div>
             <div class="headingContentDiv">Posts: ${topic.name}</div>
         </div>
-        <g:render template='posts' model="${topic}, ${resourcesList}"></g:render>
+        <div id="postParticlrTopicSearch">
+        <g:render template='posts' model="${resourcesList}"></g:render>
+        </div>
     </div>
 </div>
 <div>

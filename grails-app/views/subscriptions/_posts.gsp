@@ -1,17 +1,5 @@
 <%@ page import="com.linksharing.ReadingItem; com.linksharing.DocumentResource; com.linksharing.LinkResource" %>
 
-<div class="heading" >
-    <div class="right" style=" margin-right:2.5%;width: 60%; vertical-align: middle;">
-            <g:form controller="search" action="postSearch" class="navbar-form navbar-right">
-                <div class="form-group">
-                    <input class="form-control"  type="search"  name="query" value="${params.query}" placeholder="Search"  />
-                    <input type="hidden" name="topicId" value="${topicResourceList.topic.id[0]}">
-                    <g:submitButton name="search"></g:submitButton>
-                </div>
-            </g:form>
-    </div>
-    <div style="margin: 2% 0% 0% 2%;  vertical-align: middle; width: 40%;">Posts: ${topicResourceList.topic.name[0]}</div>
-</div>
 <g:each in="${topicResourceList}" var="topicResourceLists">
     <div class="inner-container" style="border:1px #000000 solid;">
         <div>

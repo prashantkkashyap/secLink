@@ -1,0 +1,13 @@
+#header{
+       background-color:forestgreen;alignment: top; height:15%;width:auto;margin:0%;padding:0%;border:1px solid black;}
+
+   .header-heading{font-size:32px;margin:0%;vertical-align: middle; padding-left:2.5%;width:50%;float:left;clear: both;}
+
+   .searchDiv{
+       float: right;
+       clear: both;
+       margin: 0%;
+       height: 20px;
+       width: 20%;
+       padding: 0%;
+   }

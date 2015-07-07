@@ -1,0 +1,15 @@
+#header{
+       background-color:forestgreen; height:30px;width:auto;margin:0%;padding:2%;border:1px solid black;}
+
+   .header-heading{font-size:32px;margin:0%;padding:0%;vertical-align: middle;width:50%;float:left;clear: both;}
+
+   .search {
+       float: right;
+       clear: both;
+       vertical-align: middle;
+       margin-right: 0.2%;
+       height: 20px;
+       width: 20%;
+       margin: 0;
+       padding: 0;
+   }

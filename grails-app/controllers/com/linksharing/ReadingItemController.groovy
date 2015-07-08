@@ -1,23 +1,21 @@
 package com.linksharing
 
+import grails.converters.JSON
+
 class ReadingItemController {
 def readingItemService
     def readingItem(){
 
         User user=User.get(session['userId'])
         params
-        readingItemService.readingItemMethod(user, params)
-
-       /* def readingItemResource=Resource.findById(params.id)
-       ReadingItem readingItem= ReadingItem.findByUserAndResource(user, readingItemResource)
-        if(!readingItem)
-        { readingItem = new ReadingItem(user:user, resource:readingItemResource )
-            readingItem.isRead = true
-        }
-        readingItem.isRead = true
-        readingItem.save(flush: 'true',failOnError: 'true')*/
-
-    redirect(controller: 'dashboard', action: 'dashboard')
+        def readingItem = readingItemService.readingItemMethod(user, params)
+        String s=''
+          if(readingItem.isRead==true){
+              s='Mark as unread'
+          }else
+              s='Mark as read'
+        render([flag:s] as JSON)
+    /*redirect(controller: 'dashboard', action: 'dashboard')*/
 
     }
     /*def unreadingItem (){

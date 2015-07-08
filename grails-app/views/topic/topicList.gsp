@@ -72,19 +72,25 @@
                     </ul>
                     <ul>
                         <li>@ ${topicLists.createdBy.userName}</li>
+                    </ul>
+                    <ul>
                         <li>Subscriptions</li>
                         <li>Topics</li>
                     </ul>
                     <ul>
-                        <li class="liMargin">${topicLists.subscriptions.size()}</li>
+                        <li>${topicLists.subscriptions.size()}</li>
                         <li class="liMargin">${user.topics.size()}</li>
-                    </ul>
-                    <li><a data-toggle="modal" title="Send Invitation" class="sendInvitationDiv" href="javascript:"><img src="${resource(dir: 'images', file:'mail.png')}" /></a></li>
+                        <li class="right">
+                            <a data-toggle="modal" title="Send Invitation" class="sendInvitationMail" href="javascript:">
+                                <img src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
             </g:each>
         </div>
     </div>
+<g:render template="sendInvitationMail"></g:render>
 </body>
 </html>

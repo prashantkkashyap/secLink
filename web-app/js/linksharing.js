@@ -29,5 +29,21 @@ $(document).ready(function(){
     $('.editDiv').click(function(){
        $('.editTopicDiv').show()
     });
-
+    /*$(".readAndUnread").click(function(){
+         var id = $('.markReadPost').val()
+        var id = $(this).attr('id')
+        console.log("iddddddddddd"+id)
+        $.ajax({
+            url: "${createLink(controller: 'readingItem', action: 'readingItem')}",
+            method:'post',
+            data: {id:id},
+            success:function(data){
+                console.log(data.flag)
+                $('#'+id).html(data.flag);
+            }
+        });
+    });*/
 });
+
+
+

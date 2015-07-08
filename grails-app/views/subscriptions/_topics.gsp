@@ -44,7 +44,11 @@
                         </g:form>
                     </div>
                 </li>
-                <li><a data-toggle="modal" title="Send Invitation" class="sendInvitationDiv" href="javascript:"><img src="${resource(dir: 'images', file:'mail.png')}" /></a></li>
+                <li>
+                    <a data-toggle="modal" title="Send Invitation" class="sendInvitationMail" href="javascript:">
+                        <img src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/>
+                    </a>
+                </li>
             </ul>
         </div>
         <div style="margin:2% 0 0 2%;border-top:1px #000000 solid; ">

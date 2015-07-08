@@ -65,8 +65,36 @@
         margin-left: 11%;
     }
     </style>
+    <script type="text/javascript">
+
+        jQuery(document).ready(function(){
+        $(".readAndUnread").click(function(){
+            /* var id = $('.markReadPost').val()*/
+            var id = $(this).attr('id');
+           // console.log(id);
+            $.ajax({
+                url:"${createLink(controller: 'readingItem', action: 'readingItem')}",
+                method:'post',
+                data: {id:id},
+                success:function(data){
+                    console.log(data.flag)
+                    $('#'+id).html(data.flag);
+                }
+            });
+        });
+        });
+    </script>
 </head>
 <body>
+%{--<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>--}%
 <div>
     <div id="searchDiv" class="right">
         <div class="heading">

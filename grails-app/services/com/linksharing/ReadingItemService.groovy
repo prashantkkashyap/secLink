@@ -6,6 +6,7 @@ import grails.transaction.Transactional
 class ReadingItemService {
 
     def readingItemMethod(User user, def params) {
+        println params
 
         def readingItemResource=Resource.findById(params.id)
         ReadingItem readingItem= ReadingItem.findByUserAndResource(user, readingItemResource)
@@ -17,5 +18,6 @@ class ReadingItemService {
         }else
             readingItem.isRead = false
         readingItem.save(flush: 'true',failOnError: 'true')
+        readingItem
     }
 }

@@ -18,7 +18,11 @@
                 <li class="navbar-form navbar-right"> <g:link controller="subscriptions" action="unSubscribeTopic" id="${topic.id}">Unsubscribe</g:link></li>
             </g:elseif>
             </li>
-            <li><a data-toggle="modal" title="Send Invitation" class="sendInvitationDiv" href="javascript:"><img src="${resource(dir: 'images', file:'mail.png')}" /></a></li>
+            <li>
+                <a data-toggle="modal" title="Send Invitation" class="sendInvitationMail" href="javascript:">
+                    <img src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/>
+                </a>
+            </li>
         </ul>
             <ul>
             <li>Subscriptions</li>

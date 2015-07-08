@@ -15,10 +15,14 @@
                     <li><img src="${resource(dir:'images', file:'gplus.png')}"></li>
                     <li class="navbar-form navbar-right"><g:link controller="resource" action="viewPost" id="${postSearch.id}" >View Post</g:link></li>
                     <g:if test="${postSearch.readingitems.isRead[0] == true}">
-                        <li class="navbar-form navbar-right"><g:link controller="user" action="readingItem" id="${postSearch.id}" >Mark as unread</g:link></li>
+                        <li class="navbar-form navbar-right">
+                            <a id="${postSearch.id}" class="readAndUnread" style="cursor: pointer" >Mark as unread</a>
+                        </li>
                     </g:if> <g:elseif test="${postSearch.readingitems.isRead[0] ==  false || postSearch.readingitems.isRead[0] == null}">
-                        <li class="navbar-form navbar-right"><g:link controller="user" action="readingItem" id="${postSearch.id}" >Mark as Read</g:link></li>
-                    </g:elseif>
+                    <li class="navbar-form navbar-right">
+                        <a id="${postSearch.id}" class="readAndUnread" style="cursor: pointer">Mark as Read</a>
+                    </li>
+                </g:elseif>
                     <g:if test="${postSearch.instanceOf(com.linksharing.LinkResource)}">
                         <li class="navbar-form navbar-right"><g:link>View full site</g:link></li>
                     </g:if> <g:elseif test="${postSearch.instanceOf(com.linksharing.DocumentResource)}">

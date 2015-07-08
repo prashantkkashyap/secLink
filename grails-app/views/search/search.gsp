@@ -108,7 +108,7 @@
         <div class="heading" >
             <div class="headingContentDiv">Trending Topics</div>
         </div>
-        <g:render template='trendingTopics'></g:render>
+        <g:render template='trendingTopics' model="${trendingTopicList}"></g:render>
     </div>
 </div>
 <div>

@@ -27,8 +27,8 @@
                 </div>
             </li>
             <li>
-                <a data-toggle="modal" title="Send Invitation" class="sendInvitationDiv" href="javascript:">
-                    <img src="${resource(dir: 'images', file:'mail.png')}" />
+                <a data-toggle="modal" title="Send Invitation" class="sendInvitationMail" href="javascript:">
+                    <img src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/>
                 </a>
             </li>
         </ul>
@@ -37,11 +37,12 @@
 <div  style="border-top: 1px solid #000000; padding-top: 3%;">
         <ul>
             <li><g:link controller="topic" action="showTopic" id="${publicTopics.id}">${publicTopics.name}</g:link></li>
-            <li>
-                <g:if test="${publicTopics.id != publicTopics.subscriptions.topicId[0]}" >
+            <li>${publicTopics.subscriptions.user.id[0]}
+                 ${publicTopics.createdBy.id}
+                <g:if test="${publicTopics.subscriptions.user.id[0] != publicTopics.createdBy.id}" >
                     <li class="navbar-form navbar-right"> <g:link controller="subscriptions" action="subscribeTopic" id="${publicTopics.id}">Subscribe</g:link></li>
                 </g:if>
-                <g:elseif test="${publicTopics.id == publicTopics.subscriptions.topicId[0]}" >
+                <g:elseif test="${publicTopics.subscriptions.user.id[0] == publicTopics.createdBy.id}" >
                     <li class="navbar-form navbar-right"> <g:link controller="subscriptions" action="unSubscribeTopic" id="${publicTopics.id}">Unsubscribe</g:link></li>
                 </g:elseif>
             </li>

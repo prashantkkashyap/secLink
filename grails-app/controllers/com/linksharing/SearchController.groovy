@@ -19,7 +19,7 @@ class SearchController {
                 avg('rating')
             }
         }
-
+        //println(topPost)
         topPost = topPost.sort{it.getAt(1) }
         topPost = topPost.reverse()
        // topPost = topPost.subList(0, 5)
@@ -32,8 +32,16 @@ class SearchController {
         topicList.each {it ->
             it.name
         }*/
-
-        render(view: '/search/search', model:[user:user,listTopicPost:searchMap.listTopicPost,topPosts:resources ] )
+        def trendingTopicList
+        trendingTopicList=  Subscription.createCriteria().list(){
+            projections{
+                groupProperty('topic')
+                avg('user')
+            }
+            println(trendingTopicList)
+        }
+        render(view: '/search/search', model:[user:user,listTopicPost:searchMap.listTopicPost,topPosts:resources,
+                                              trendingTopicList:trendingTopicList ] )
     }
     def postSearch(){
         params
@@ -50,9 +58,18 @@ class SearchController {
     }
 
     def trendingTopics(){
+        def trendingTopicList
+        trendingTopicList=  Subscription.createCriteria().listDistinct {
+            projection{
+                groupProperty('topic')
+                count('user')
+            }
+            println(trendingTopicList)
+        }
 
-        def trendingTopicsList = topicService.trandingTopicMethod()
-        render(view: 'search/search')
+
+//        def trendingTopicsList = topicService.trandingTopicMethod()
+        render(view: 'search/search',model: [trendingTopicList:trendingTopicList])
     }
     def userSearch(){
         User user=User.get(session['userId'])

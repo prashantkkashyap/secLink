@@ -35,7 +35,7 @@
         <ul>
             <g:each in="${subscribedTopic}" var="subscribed">
             <g:if test="${subscribed.instanceOf(com.linksharing.Subscription)}">
-                    <li></li>
+                <li></li>
             </g:if>
             <g:else>
                   <li> <g:link controller="subscriptions" action="subscriptionTopics" id="${topic.id}">Subscribe</g:link></li>

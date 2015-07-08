@@ -17,6 +17,11 @@ $(document).ready(function(){
     $(".deleteTopic").click(function(){
         alert("Do you want to delete Topic ?");
     });
+    $("#resetPassword").click(function(){
+        //console.log("hello")
+        $("#sendResetPasswordModal").modal();
+    });
+
     function displayAlertMessage(message) {
         var timeOut = 5
         jQuery('#messageBox').text(message).fadeIn()

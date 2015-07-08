@@ -100,8 +100,9 @@ class UserController {
         if (!user.admin) {
             publicTopic = Topic.findAllByCreatedByAndVisibility(user, Visibility.PUBLIC).each { it}
         } else {
-            publicTopic = Topic.list()
+            publicTopic = Topic.findAllByCreatedBy(user).each {it}
         }
+        //println(publicTopic)
 
         // posts Section
         List<Resource> publicTopicResource = new ArrayList<>()

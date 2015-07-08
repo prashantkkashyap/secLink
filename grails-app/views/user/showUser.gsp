@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="${resource(dir: 'css',file: 'signin.css')}" >
     <link type="text/css" rel="stylesheet" href="${resource(dir:'css',file: 'header.css')}">
     %{--<script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
-    <script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>
-    <script rel="script"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>--}%
+    <script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
+    <script type="text/javascript"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
     <style type="text/css">
 
     body {font-family: Helvetica,Arial; font-size:12px;}
@@ -114,7 +114,7 @@
     </script>
 </head>
 <body>
-<div id="fb-root"></div>
+%{--<div id="fb-root"></div>
 <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
@@ -123,7 +123,7 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
-<div>
+<div>--}%
     <div id="posts" class="right">
         <div class="heading">
             <div class="right" style=" margin-right:3.5%;">

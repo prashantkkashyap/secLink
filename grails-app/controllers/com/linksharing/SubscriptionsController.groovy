@@ -44,13 +44,18 @@ class SubscriptionsController {
 
         User user = User.get(session['userId'])
         params
-        def unSubscribe=subscriptionService.unSubscribeTopicMethod(user, params)
-
-        if (unSubscribe) {
+        def topicId = Topic.get(params.id)
+       // println(topicId.createdById)
+       // println topicId.subscriptions.user.id[0]
+        if (topicId.createdById == topicId.subscriptions.user.id[0]){
             flash.message = 'User can not be unsubscribe'
             render(view: '/template/alertTemplate', model: [flash: flash.message])
+        }else if(topicId.createdById != topicId.subscriptions.user.id[0]) {
+            Subscription subscription = Subscription.findByTopicAndUser(topicId, user)
+            subscription.delete(flush: true)
+            redirect(controller:'dashboard', action: 'dashboard')
         }
-        redirect(controller:'dashboard' ,action: 'dashboard')
+
     }
   /*  def topicResources(){
         User user = User.get(session['userId'])

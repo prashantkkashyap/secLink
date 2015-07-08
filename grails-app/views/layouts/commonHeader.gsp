@@ -51,7 +51,7 @@
                             </div>
                         </g:link>
                     </li>
-                    <li style="color: #ffffff;"><g:link controller="user" action="showUser">${user?.firstName}</g:link></li>
+                    <li><g:link controller="user" action="showUser"style="color:white;font-size: 15px;"><appTag:userFullName></appTag:userFullName></g:link></li>
                 </ul>
                 <div class="btn-group">
                     <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">

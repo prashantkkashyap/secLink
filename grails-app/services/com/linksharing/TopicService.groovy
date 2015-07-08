@@ -37,7 +37,9 @@ class TopicService {
         topicId.save(flush: 'true', failOnError: 'true')
     }
 
-    def trandingTopicMethod(){}
+    def trandingTopicMethod(){
+
+    }
 
     def topPostMethod(){
     List topPosts = ResourceRatings.createCriteria().listDistinct {

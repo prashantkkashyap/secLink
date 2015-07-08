@@ -1,6 +1,7 @@
 package com.linksharing
 
 class LoginController {
+    def emailService
 
     // controller -1
     def login() {
@@ -30,10 +31,21 @@ class LoginController {
         }
 
     }
-    /*def editUserPassword(){
-        [user:User.get(params.userId)]
+    def resetPassword(){
+        println params
 
-    }*/
+        def user= User.findByEmail(params.email)
+        if(!user){
+            flash.message= "Email-id is not found !! Please enter correct Email-id"
+            render(view: '/template/alertTemplate',model: [flash:flash.message])
+        }else if(user.active==false){
+            flash.message ='User is deactivated by Admin !! contact to administration !!!'
+            render(view: '/template/alertTemplate' , model:[flash:flash.message])
+        }else
+
+            emailService.resetPasswordMethod(user)
+        redirect(controller: 'login',action: 'login')
+    }
 
     /*if(params.email.equals("abcuser1@gmail.com") && params.pwd.equals('12345678')) {
             flash.message = "login succeed"

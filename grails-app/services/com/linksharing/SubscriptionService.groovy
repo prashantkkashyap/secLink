@@ -43,18 +43,4 @@ class SubscriptionService {
         subscription.seriousness= Seriousness.CASUAL
         subscription.save(flush: true,failOnError: true)
         }
-    def unSubscribeTopicMethod(User user,def params){
-       // println(params.id)
-        def topicId = Topic.get(params.id)
-       // println(topicId.createdById)
-       // println user.id
-
-        if(topicId.createdById != user.id) {
-            Subscription subscription = Subscription.findByTopicAndUser(topicId, user)
-            subscription.delete(flush: true)
-        }else {
-            return
-        }
-
-    }
 }

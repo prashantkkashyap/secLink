@@ -192,7 +192,7 @@ class UserController {
         } else if (params.password != params.confirm) {
             flash.message = "Password do not match"
             redirect(controller: 'home', action: 'home')
-        } else if (request.method=='POST') {
+        } else {
            /* MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request;
             CommonsMultipartFile image = (CommonsMultipartFile)mpr.getFile("image");*/
            // println(image.properties)

@@ -8,10 +8,12 @@
         <img src="${resource(dir: 'images',file:"/userImage/${user.userName}")}" />
     </div>
     <div id="subscriptionBorder" style="margin-top: 2%;">
-        <g:form class="form-group" controller="user" action="updateTopicName" id="${userTopics.id}">
-            <g:textField style="background-color:yellowgreen;"  name="name" id="name" value="${userTopics.name}"></g:textField>
-            <g:submitButton name="submitButton" value="Save"> </g:submitButton>
-        </g:form>
+        <div class="editTopicDiv" style="display: none;">
+            <g:form class="form-group" controller="user" action="updateTopicName" id="${userTopics.id}">
+                <g:textField style="background-color:yellowgreen;"  name="name" id="name" value="${userTopics.name}"></g:textField>
+                <g:submitButton name="submitButton" value="Save"> </g:submitButton>
+            </g:form>
+        </div>
         <ul>
             <li>@ ${user.firstName}</li>
             <li> <g:link controller="topic" action="showTopic" id="${userTopics.id}">${userTopics.name}</g:link></li>
@@ -44,12 +46,12 @@
                 </div>
             </li>
         </li>
-            <li><a data-toggle="modal" class="sendInvitationsModalDiv" href="javascript:">
+            <li><a data-toggle="modal" title="Send Invitation" class="sendInvitationMail" href="javascript:">
                 <img  src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/></a>
             </li>
             <li>
                 <g:if test="${userTopics.createdBy.id == user.id ||  user.admin == true}">
-                    <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
+                    <a data-toggle="modal" class="editDiv" href="">
                         <img src="${resource(dir:'images',file:'edit.png')}"/>
                     </a>
                 </g:if>

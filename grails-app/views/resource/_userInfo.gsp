@@ -53,7 +53,9 @@
     </ul>
     <div><p>${userPost.description}</p></div>
        <ul>
-            <li><img src="${resource(dir: 'images',file:'facebook.jpg')}"></li>
+           <li style="vertical-align: bottom;">
+               <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+           </li>
             <li><img src="${resource(dir:'images', file:'twitter.jpg')}"></li>
             <li><img src="${resource(dir:'images', file:'gplus.png')}"></li>
 

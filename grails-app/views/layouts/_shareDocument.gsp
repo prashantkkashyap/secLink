@@ -7,10 +7,10 @@
                     <h4><span class="glyphicon glyphicon-link"></span>Share Document</h4>
                 </div>
                 <div class="modal-body">
-                    <g:uploadForm enctype="multipart/form-data" method="post" controller="documentResource" action="shareDocumentResource">
+                    <g:uploadForm id="form" enctype="multipart/form-data" method="post" controller="documentResource" action="shareDocumentResource">
                         <div class="form-group">
                             <lable for="fileName">Document*:&nbsp;&nbsp;&nbsp;</lable>
-                            <g:textField name="fileName"></g:textField>
+                            <input name="fileName" required novalidate="novalidate"/>
                             <g:if test="${flash.message}"><div class="message" role="status">${flash.message}</div></g:if>
                                 <fieldset class="form" style="margin:2% 0 0 16%;">
                                     <input type="file" name="file" />
@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group">
                             <lable for="description">Description*:&nbsp;&nbsp;</lable>
-                            <g:textArea name="description" rows="7" cols="50"></g:textArea>
+                            <g:textArea name="description" rows="7" cols="50" required="required" novalidate="novalidate"></g:textArea>
                         </div>
                         <div class="form-group">
                             <lable for="topic">Topic*:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>

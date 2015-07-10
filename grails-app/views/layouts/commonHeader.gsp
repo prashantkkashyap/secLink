@@ -11,8 +11,14 @@
     <title><g:layoutTitle default="commonHeader"></g:layoutTitle></title>
     <link rel="stylesheet" href="${resource(dir:'css',file: 'bootstrap.min.css')}" >
     <script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
+    <script type="text/javascript" src="${resource(dir: 'js',file: 'jquery.validate.js')}"></script>
     <script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>
     <script rel="script" src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#form").validate();
+        });
+    </script>
 
     <style type="text/css">
     ul li {

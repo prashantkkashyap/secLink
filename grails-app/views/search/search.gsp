@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${resource(dir:'css',file: 'bootstrap.min.css')}" >
     %{--<script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
     <script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
-    <script rel="script"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
+    <script type="text/javascript"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
 
     <style type="text/css">
     body {font-family: Helvetica,Arial; font-size:12px;}
@@ -108,7 +108,7 @@
         <div class="heading" >
             <div class="headingContentDiv">Trending Topics</div>
         </div>
-        <g:render template='trendingTopics' model="${trendingTopicList}"></g:render>
+        <g:render template='trendingTopic' model="${user},${trendingTopicList}"></g:render>
     </div>
 </div>
 <div>

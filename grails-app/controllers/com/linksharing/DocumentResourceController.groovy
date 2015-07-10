@@ -12,6 +12,7 @@ class DocumentResourceController {
 
         User user=User.get(session['userId'])
         DocumentResource documentResource = new DocumentResource(params)
+        println params
 
         if(request instanceof MultipartHttpServletRequest)
         {

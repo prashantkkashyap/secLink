@@ -99,6 +99,7 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+       //grails.serverURL = "http://localhost:8080/linksharing"
         uploadFolder =  "web-app/document/"
     }
     production {

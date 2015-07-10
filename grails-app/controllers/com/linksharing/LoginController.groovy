@@ -43,7 +43,7 @@ class LoginController {
             render(view: '/template/alertTemplate' , model:[flash:flash.message])
         }else
 
-            emailService.resetPasswordMethod(user)
+            emailService.resetPasswordMethod(user, request)
         redirect(controller: 'login',action: 'login')
     }
 

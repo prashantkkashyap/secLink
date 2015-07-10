@@ -1,5 +1,7 @@
 package com.linksharing
 
+import com.Visibility
+
 class SearchController {
 
     def searchService
@@ -32,14 +34,17 @@ class SearchController {
         topicList.each {it ->
             it.name
         }*/
-        def trendingTopicList
-        trendingTopicList=  Subscription.createCriteria().list(){
-            projections{
+
+        List <Topic> trendingTopicList = Resource.createCriteria().list() {
+            projections {
                 groupProperty('topic')
-                avg('user')
-            }
-            println(trendingTopicList)
+                count()
+                }
         }
+        trendingTopicList = trendingTopicList.sort{it.getAt(1)}
+        trendingTopicList = trendingTopicList.reverse()
+        println(trendingTopicList)
+        //println(topicList.id)
         render(view: '/search/search', model:[user:user,listTopicPost:searchMap.listTopicPost,topPosts:resources,
                                               trendingTopicList:trendingTopicList ] )
     }
@@ -57,7 +62,7 @@ class SearchController {
         render(template:'/template/topics' ,model: [topicSearchList:topicSearchList])
     }
 
-    def trendingTopics(){
+   /* def trendingTopics(){
         def trendingTopicList
         trendingTopicList=  Subscription.createCriteria().listDistinct {
             projection{
@@ -70,7 +75,7 @@ class SearchController {
 
 //        def trendingTopicsList = topicService.trandingTopicMethod()
         render(view: 'search/search',model: [trendingTopicList:trendingTopicList])
-    }
+    }*/
     def userSearch(){
         User user=User.get(session['userId'])
         params

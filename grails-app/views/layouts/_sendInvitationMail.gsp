@@ -7,10 +7,10 @@
                     <h4><span class="glyphicon glyphicon-envelope"></span>Send Invitations</h4>
                 </div>
                 <div class="modal-body">
-                    <g:form controller="user" action="emailInvitation">
+                    <g:form id="form" name="form" controller="user" action="emailInvitation" >
                         <div class="form-group">
                             <lable for="email"><span class="glyphicon glyphicon-envelope"></span>Email* : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                            <input type="email" id="email" name="email" placeholder="Enter Email"/>
+                            <input type="email" id="email" name="email" placeholder="Enter Email" required novalidate="novalidate"/>
                         </div>
                         <div class="form-group">
                             <lable for="topic"><span class="glyphicon glyphicon-pencil"></span>Topic Name* : </lable>

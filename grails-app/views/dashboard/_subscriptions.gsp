@@ -41,7 +41,7 @@
                             </g:if>
                         </div>
                     </li>
-                    <li><a data-toggle="modal" titele="Send Invitations" class="sendInvitationMail" href="javascript:void(0)">
+                    <li><a data-toggle="modal" title="Send Invitation" class="sendInvitationMail" href="javascript:void(0)">
                         <img  src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/></a>
                     </li>
                     <li>

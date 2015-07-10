@@ -13,15 +13,15 @@
     <link rel="stylesheet" href="${resource(dir:'css',file: 'bootstrap.min.css')}" >
     %{--<link rel="stylesheet" href="${resource(dir:'css',file: 'header.css')}">
     <link rel="stylesheet" href="${resource(dir: 'css',file: 'signin.css')}" >--}%
-    %{--<script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
-    <script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
-   %{-- <script rel="script"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>--}%
+    %{--<script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
+    <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
+    <script type="text/javascript"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
 
     <style type="text/css">
     body {font-family: Helvetica,Arial; font-size:12px;}
 
     form label {display:inline-block ; width:100%;}
-    #editTopics{margin:2% 2% 0% 2%; padding:0%;width:43%;height:auto;border:1px solid black;float: none;}
+    #editTopics{margin:2% 2% 0% 2%; padding:0%;width:43%;height:auto;border:1px solid black;}
     #changePassword{margin:2% 2% 2% 2%; padding:0%;width:50%;height:auto;border:1px solid black;
         float: right;clear:both;}
     #editProfile{margin:0% 2% 0% 2%; padding:0%;width:50%;height: auto; border:1px solid black;
@@ -109,7 +109,7 @@
         <g:render template="editTopics" model="${user},${userTopic}" ></g:render>
     </div>
 </div>
-<g:render template="sendInvitationMail"></g:render>
+%{--<g:render template="sendInvitationMail"></g:render>--}%
 
 </body>
 </html>

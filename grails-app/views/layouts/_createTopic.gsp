@@ -13,14 +13,14 @@
                             Login as : ${session["user"]}  | <g:link action="logout">Logout</g:link>
                     </g:if>
                     <g:else>--}%
-                        <g:form controller="topic" action="createTopicAndSubscribeCreator">
+                        <g:form id="form" name="form" controller="topic" action="createTopicAndSubscribeCreator">
                             <div class="form-group">
                                 <lable for="name">Name*:&nbsp;&nbsp;</lable>
-                                    <g:textField name="name" id="name"></g:textField>
+                                    <input name="name" id="name" required novalidate="novalidate"/>
                             </div>
                             <div class="form-group">
                                 <lable for="visibility" name="visibility" >Visibility*:&nbsp;&nbsp;</lable>
-                                    <select name="visibility" id="visibility">
+                                    <select name="visibility" id="visibility" >
                                         <option value="${com.Visibility.PUBLIC}">Public</option>
                                         <option value="${com.Visibility.PRIVATE}">Private</option>
                                     </select>

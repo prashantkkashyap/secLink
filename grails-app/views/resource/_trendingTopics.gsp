@@ -3,10 +3,6 @@
 <div class="inner-container" style="border: 1px solid #000000;">
 
     <div>
-        %{--<g:if test="${user.photo ==null}">
-            <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
-        </g:if>--}%
-
         <img src="${resource(dir: 'images',file: "/userImage/${trendingTopics.user.userName}")}" />
     </div>
     <ul>

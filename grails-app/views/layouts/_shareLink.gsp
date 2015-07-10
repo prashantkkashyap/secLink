@@ -7,14 +7,14 @@
                     <h4><span class="glyphicon glyphicon-link"></span>Share Link</h4>
                 </div>
                 <div class="modal-body">
-                    <g:form controller="linkResource" action="shareLinkResource">
+                    <g:form id="form" name="form" controller="linkResource" action="shareLinkResource" >
                         <div class="form-group">
                             <lable for="url" >Link*:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                            <g:textField name="url"></g:textField>
+                            <input name="url" type="url" required novalidate="novalidate" />
                         </div>
                         <div class="form-group">
                             <lable for="description">Description*:&nbsp;&nbsp;</lable>
-                            <g:textArea name="description" rows="7" cols="50"></g:textArea>
+                            <g:textArea name="description" rows="7" cols="50" required="required" novalidate="novalidate"></g:textArea>
                         </div>
                         <div class="form-group">
                             <lable for="topic">Topic*:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>

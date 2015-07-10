@@ -1,0 +1,45 @@
+/**
+ * Created by prashant on 10/7/15.
+ */
+$(document).ready(function () {
+       $("#signupForm").validate({
+        rules: {
+            firstName: "required",
+            lastName: "required",
+            userName: "required"
+            ,
+            password: {
+                required: true,
+                minlength: 8,
+                maxlength: 15
+            },
+            confirm: {
+                required: true,
+                minlength: 8,
+                maxlength: 15,
+                equalTo: "#password"
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            firstName: "Please enter your first name",
+            lastName: "Please enter your last name",
+            userName: "Please enter your user name"
+            ,
+            password: {
+                required: "Please provide your password",
+                minlength: "Your password must consist of at least 8 characters",
+                maxlength: "Your password must consist of maximum 15 characters"
+            },
+            confirm: {
+                required: "Please provide your password",
+                minlength: "Your password must consist of at least 8 characters",
+                maxlength: "Your password must consist of maximum 15 characters",
+                equalTo: "Confirm password should be same as above password"
+            }
+        }
+    });
+});

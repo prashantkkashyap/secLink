@@ -16,9 +16,9 @@
     <title>Login</title>
     <link rel="stylesheet" href=${resource(dir: 'css', file: 'signin.css')}>
     <link rel="stylesheet" href="${resource(dir:'css',file: 'bootstrap.min.css')}" >
-    <script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
-    <script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>
-    <script rel="script" src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
+    <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
+    <script type="text/javascript"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>
+    <script  type="text/javascript" rel="script" src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
     <style type="text/css">
     ul li {
         list-style-type: none;
@@ -61,7 +61,7 @@
      </div>
 </div>--}%
 <div class="container">
-    ${flash.message}
+   %{-- ${flash.message}--}%
     <g:if test="${session['user']}">
         </br>
         Login as: ${session['user']} | <g:link action="logout">Logout</g:link>
@@ -70,14 +70,13 @@
         <g:form controller="login" action="loginHandler" class="form-signin">
             <h2 class="form-signin-heading">Please sign in</h2>
             <label for="email" class="sr-only">Email address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required
-                   autofocus>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required  autofocus>
             <label for="password" class="sr-only">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
             <div class="checkbox">
                 <label><input type="checkbox" value="remember-me"> Remember me</label> </br>
                 <label>
-                    <a data-toggle="modal" id="resetPassword">Forgot password</a>
+                    <a data-toggle="modal" id="resetPassword" >Forgot password</a>
                 </label>
         %{--<label><g:link controller="login" action="resetPassword">Forgot password</g:link></label>--}%
             <label><g:link controller="home" action="home">Registration</g:link></label>

@@ -16,7 +16,7 @@ class BootStrap {
     def init = { servletContext ->
 
         //createUser()
-       createTopic()
+      // createTopic()
         /*createResources()
         createReadingItems()
         createResourceRatings()
@@ -27,7 +27,7 @@ class BootStrap {
 
         def user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", username: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
         def user2 = new User(firstName: "user2", lastName: "Kashyap2", email: "abcuser2@gmail.com", username: "user2", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
-        def user3 = new User(firstName: "Prashant", lastName: "Kashyap", email: "prashant.kr06@gmail.com", username: "PrashantKashyap", password: "igdefaul", photo: [1, 2, 3, 4, 5], active: true)
+        def user3 = new User(firstName: "Prashant", lastName: "Kashyap", email: "prashant.kr06@gmail.com", username: "PrashantKashyap", password: "igdefault", photo: [1, 2, 3, 4, 5], active: true)
 
 
         user1.save(flush: true, failOnError: true)?: println("...........Error in Saving......................................")
@@ -39,8 +39,50 @@ class BootStrap {
         SecUserSecRole.create user3, adminRole, true
         SecUserSecRole.create user3, switchUserRole, true
         SecUserSecRole.create user2, userRole, true
+
+        Topic user1t1 = new Topic(name: "java1", visibility: Visibility.PRIVATE)
+        Topic user1t2 = new Topic(name: "java2", visibility: Visibility.PUBLIC)
+        Topic user1t3 = new Topic(name: "java3", visibility: Visibility.PUBLIC)
+        Topic user1t4 = new Topic(name: "java4", visibility: Visibility.PRIVATE)
+        Topic user1t5 = new Topic(name: "java5", visibility: Visibility.PRIVATE)
+
+        Topic user3t1 = new Topic(name: "Grails1", visibility: Visibility.PRIVATE)
+        Topic user3t2 = new Topic(name: "Grails2", visibility: Visibility.PUBLIC)
+        Topic user3t3 = new Topic(name: "Grails3", visibility: Visibility.PUBLIC)
+        Topic user3t4 = new Topic(name: "Grails4", visibility: Visibility.PRIVATE)
+        Topic user3t5 = new Topic(name: "Grails5", visibility: Visibility.PRIVATE)
+
+        Topic user2t1 = new Topic(name: "Sales1", visibility: Visibility.PRIVATE)
+        Topic user2t2 = new Topic(name: "Sales2", visibility: Visibility.PUBLIC)
+        Topic user2t3 = new Topic(name: "Sales3", visibility: Visibility.PUBLIC)
+        Topic user2t4 = new Topic(name: "Sales4", visibility: Visibility.PRIVATE)
+        Topic user2t5 = new Topic(name: "Sales5", visibility: Visibility.PRIVATE)
+
+        println("..............$User.count................................")
+
+       User.get(1).addToTopics(user1t1)
+                .addToTopics(user1t2)
+                .addToTopics(user1t3)
+                .addToTopics(user1t4)
+                .addToTopics(user1t5)
+                .save(flush: true, failOnError: true) ?: println("Error to add topic1")
+
+        User.get(2).addToTopics(user2t1)
+                .addToTopics(user2t2)
+                .addToTopics(user2t3)
+                .addToTopics(user2t4)
+                .addToTopics(user2t5)
+                .save(flush: true, failOnError: true) ?: println("Error to add topic2")
+
+        User.get(3).addToTopics(user3t1)
+                .addToTopics(user3t2)
+                .addToTopics(user3t3)
+                .addToTopics(user3t4)
+                .addToTopics(user3t5)
+                .save(flush: true, failOnError: true) ?: println("Error to add topic3")
+
     }
-    def createTopic() {
+    /*def createTopic() {
         Topic user1t1 = new Topic(name: "java1", visibility: Visibility.PRIVATE)
         Topic user1t2 = new Topic(name: "java2", visibility: Visibility.PUBLIC)
         Topic user1t3 = new Topic(name: "java3", visibility: Visibility.PUBLIC)
@@ -68,7 +110,7 @@ class BootStrap {
                 .addToTopics(user3t4)
                 .addToTopics(user3t5)
                 .save(flush: true, failOnError: true) ?: println("Error to add topic2")
-    }
+    }*/
   /* List <User>createUser(){
        List<User> users =new ArrayList<User>()
        (1..5).each {

@@ -15,8 +15,8 @@ class BootStrap {
 
     def init = { servletContext ->
 
-       // createUser()
-        //createTopic()
+        //createUser()
+        createTopic()
         /*createResources()
         createReadingItems()
         createResourceRatings()
@@ -25,15 +25,15 @@ class BootStrap {
         def adminRole = SecRole.findByAuthority("ROLE_ADMIN") ?: new SecRole(authority:"ROLE_ADMIN" ).save()
         def switchUserRole = SecRole.findByAuthority("ROLE_SWITCH_USER")?: new SecRole(authority: "ROLE_SWITCH_USER").save()
 
-       /* def user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", username: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
+        def user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", username: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
         def user2 = new User(firstName: "user2", lastName: "Kashyap2", email: "abcuser2@gmail.com", username: "user2", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
 
         user1.save(flush: true, failOnError: true)?: println("...........Error in Saving......................................")
         user2.save(flush: true, failOnError: true)?: println("...........Error in Saving......................................")
 
-        SecUserSecRole.create user1, adminRole, true*/
+        SecUserSecRole.create user1, adminRole, true
     }
-   /* def createTopic() {
+    def createTopic() {
         Topic user1t1 = new Topic(name: "java1", visibility: Visibility.PRIVATE)
         Topic user1t2 = new Topic(name: "java2", visibility: Visibility.PUBLIC)
         Topic user1t3 = new Topic(name: "java3", visibility: Visibility.PUBLIC)
@@ -61,7 +61,7 @@ class BootStrap {
                 .addToTopics(user2t4)
                 .addToTopics(user2t5)
                 .save(flush: true, failOnError: true) ?: println("Error to add topic2")
-    }*/
+    }
   /* List <User>createUser(){
        List<User> users =new ArrayList<User>()
        (1..5).each {

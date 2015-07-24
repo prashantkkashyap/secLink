@@ -18,7 +18,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost:3306/secLinksharing"
             driverClassName="com.mysql.jdbc.Driver"
             username="root"
@@ -28,7 +28,7 @@ environments {
     }
     qa{
         dataSource{
-            dbCreate = "create-drop"
+            dbCreate = "update"
             url = "jdbc:mysql://localhost:3306/prashant_QA"
             driverClassName="com.mysql.jdbc.Driver"
             username="prashant"

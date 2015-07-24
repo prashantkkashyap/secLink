@@ -114,7 +114,7 @@
     </script>
 </head>
 <body>
-<div id="fb-root"></div>
+%{--<div id="fb-root"></div>
 <script> $(document).read(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
@@ -122,7 +122,7 @@
     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-</script>
+</script>--}%
 <div>
     <div id="posts" class="right">
         <div class="heading">
@@ -168,10 +168,6 @@
         </div>
     </div>
 </div>
-
-%{--<g:render template="shareLink"></g:render>
-<g:render template="shareDocument"></g:render>
-<g:render template="sendInvitationMail"></g:render>--}%
 
 </body>
 </html>

@@ -3,9 +3,10 @@ package com.linksharing
 import com.LinkResourceCommand
 
 class LinkResourceController {
+    def springSecurityService
 
     def shareLinkResource(LinkResourceCommand linkResourceCO){
-        User user= User.get(session['userId'])
+        User user= User.get(springSecurityService.principal.id)
       //  println"...............................${linkResourceCO.topic}......................................."
       //  println(".........${params}............")
         LinkResource linkResource = new LinkResource(params)

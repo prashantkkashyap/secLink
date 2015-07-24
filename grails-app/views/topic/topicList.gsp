@@ -64,14 +64,14 @@
                     %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
                         <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
                     </g:if>--}%
-                    <img src="${resource(dir: 'images',file: "/userImage/${topicLists.createdBy.userName}")}" />
+                    <img src="${resource(dir: 'images',file: "/userImage/${topicLists.createdBy.username}")}" />
                 </div>
                 <div>
                     <ul>
                         <li><g:link controller="topic" action="showTopic" id="${topicLists.id}">${topicLists.name}</g:link> (${topicLists.visibility})</li>
                     </ul>
                     <ul>
-                        <li>@ ${topicLists.createdBy.userName}</li>
+                        <li>@ ${topicLists.createdBy.username}</li>
                     </ul>
                     <ul>
                         <li>Subscriptions</li>

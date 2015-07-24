@@ -5,7 +5,7 @@
             %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
                 <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
             </g:if>--}%
-            <img src="${resource(dir: 'images',file: "/userImage/${totalSubscriptionUserTopic.createdBy.userName}")}" />
+            <img src="${resource(dir: 'images',file: "/userImage/${totalSubscriptionUserTopic.createdBy.username}")}" />
         </div>
             <div id="subscriptionBorder" >
                 <ul>
@@ -33,31 +33,47 @@
                     </li>
                     <li>
                         <div class="line">
-                            <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
+                            <sec:ifAllGranted roles="ROLE_ADMIN,ROLE_USER">
                                 <g:form name='visibility' controller="topic"  id="${totalSubscriptionUserTopic.id}" action="topicVisibility">
                                     <g:select name="visibility" onchange="this.form.submit()" from="${com.Visibility}" value="${totalSubscriptionUserTopic.visibility}"/>
                                     <noscript><input type="submit" value="submit"></noscript>
                                 </g:form>
-                            </g:if>
+                            </sec:ifAllGranted>
+                            %{--<g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
+                                <g:form name='visibility' controller="topic"  id="${totalSubscriptionUserTopic.id}" action="topicVisibility">
+                                    <g:select name="visibility" onchange="this.form.submit()" from="${com.Visibility}" value="${totalSubscriptionUserTopic.visibility}"/>
+                                    <noscript><input type="submit" value="submit"></noscript>
+                                </g:form>
+                            </g:if>--}%
                         </div>
                     </li>
                     <li><a data-toggle="modal" title="Send Invitation" class="sendInvitationMail" href="javascript:void(0)">
                         <img  src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/></a>
                     </li>
                     <li>
-                    <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
+                        <sec:ifLoggedIn roles="ROLE_ADMIN,ROLE_USER">
+                            <a data-toggle="modal" class="editDiv" href="javascript:">
+                                <img src="${resource(dir:'images',file:'edit.png')}"/>
+                            </a>
+                        </sec:ifLoggedIn>
+                    %{--<g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
                         <a data-toggle="modal" class="editDiv" href="javascript:">
                             <img src="${resource(dir:'images',file:'edit.png')}"/>
                         </a>
-                    </g:if>
+                    </g:if>--}%
                     </li>
                     <li>
                        %{-- <a data-toggle="modal" href="javascript:void(0)">--}%
-                        <g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
+                       <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_USER">
+                           <g:link controller="topic" action="topicDelete" id="${totalSubscriptionUserTopic.id}">
+                           <span> <img src="${resource(dir:'images',file:'delete.jpg')}"/></span>
+                           </g:link>
+                       </sec:ifAnyGranted>
+                        %{--<g:if test="${totalSubscriptionUserTopic.createdBy.id == user.id ||  user.admin == true}">
                             <g:link controller="topic" action="topicDelete" id="${totalSubscriptionUserTopic.id}">
                               <span> <img src="${resource(dir:'images',file:'delete.jpg')}"/></span>
                             </g:link>
-                        </g:if>
+                        </g:if>--}%
                        %{-- </a>--}%
                     </li>
                 </ul>

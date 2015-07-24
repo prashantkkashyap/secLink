@@ -1,13 +1,13 @@
 <g:each in="${subscribedUsers}" var="user" >
 <div class="inner-container"  style="border: 1px solid #000000;">
     <div>
-        <img src="${resource(dir:'images', file: "/userImage/${user.userName}")}"/>
+        <img src="${resource(dir:'images', file: "/userImage/${user.username}")}"/>
     </div>
     <ul>
         <li>${user.firstName} ${user.lastName}</li>
     </ul>
     <ul>
-        <li>@ ${user.userName}</li>
+        <li>@ ${user.username}</li>
     </ul>
     <ul>
         <li>Subscriptions</li>

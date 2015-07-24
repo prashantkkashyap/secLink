@@ -2,14 +2,14 @@
 
 <div class="inner-container">
     <div>
-        <img src="${resource(dir:'images', file: "/userImage/${topic.createdBy.userName}")}"/>
+        <img src="${resource(dir:'images', file: "/userImage/${topic.createdBy.username}")}"/>
     </div>
     <div>
         <ul>
             <li>${topic.name} (${topic.visibility})</li>
         </ul>
         <ul>
-            <li>@ ${topic.createdBy.userName}</li>
+            <li>@ ${topic.createdBy.username}</li>
             <li>
             <g:if test="${topic.id != topic.subscriptions.topicId[0]}" >
                 <li class="navbar-form navbar-right"> <g:link controller="subscriptions" action="subscribeTopic" id="${topic.id}">Subscribe</g:link></li>

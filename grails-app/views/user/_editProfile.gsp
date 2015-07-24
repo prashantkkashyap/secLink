@@ -1,26 +1,27 @@
 <div class="inner-container">
-    <g:uploadForm controller="user" action="updateUserProfile" enctype="multipart/form-data">
+
+    <g:form id="userProfile" controller="user" action="updateUserProfile" enctype="multipart/form-data">
         <fieldset>
             <div class="line">
                 <label for="firstName">First Name: </label>
-                <g:textField name="firstName" id="firstName" />
+                <input name="firstName" id="firstName" required novalidate="novalidate"/>
 
             </div>
             <div class="line">
                 <label for="lastName">Last Name: </label>
-                <g:textField name="lastName" id="lastName"/>
+                <input name="lastName" id="lastName" required novalidate="novalidate"/>
 
             </div>
              <div class="line">
                  <label for="userName"> Username*: </label>
-                 <input type="text" name="userName" id="userName"/>
+                 <input type="text" name="userName" id="userName" required novalidate="novalidate"/>
              </div>
                 <div class="line"><label for="image">Photo</label>
-                <input type="file" id="image" name="image">
+                <input type="file" id="image" name="image" required novalidate="novalidate">
             </div>
             <div class="line">
                 <g:submitButton name="submitButton" value="Update" />
             </div>
          </fieldset>
-    </g:uploadForm>
+    </g:form>
 </div>

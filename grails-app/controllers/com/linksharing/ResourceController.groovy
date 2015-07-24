@@ -1,9 +1,10 @@
 package com.linksharing
 
 class ResourceController {
+    def springSecurityService
 
        def viewPost(){
-           User user= User.get(session['userId'])
+           User user= User.get(springSecurityService.principal.id)
            def userPost = Resource.findById(params.id)
            //println userPost.properties
 

@@ -1,9 +1,14 @@
 package com.linksharing
 
+import grails.plugin.springsecurity.annotation.Secured
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class DashboardController {
+
+    def springSecurityService
     def readingItemService
     def dashboard() {
-        User user = User.get(session['userId'])
+       User user = springSecurityService.currentUser
+        println user
         long userSubscription = Subscription.countByUser(user)
         int userTopic = Topic.countByCreatedBy(user)
 
@@ -23,26 +28,23 @@ class DashboardController {
             subscriptionUserTopicList.add(subscription.topic)
             }
 
+          /*  def topicCreatedByUser = user.topics.id
+            topicCreatedByUser= topicCreatedByUser.sort()*/
 
-        def topicCreatedByUser= user.topics.id
-        topicCreatedByUser.sort ()
        // println(topicCreatedByUser)
 
-       /* List topicCreatedByUser =[]
-        Topic.findAllByCreatedBy(user).each{topic ->
-            topicCreatedByUser.add(topic)
-        }*/
-
-
-        // Map userDetails = [user: user,userSubscription:userSubscription,userTopic:userTopic,unreadReources:unreadResources]
+       // Map userDetails = [user: user,userSubscription:userSubscription,userTopic:userTopic,unreadReources:unreadResources]
 
         render(view: '/dashboard/dashboard' , model: [user: user, userSubscription: userSubscription, userTopic: userTopic,
                                                      unreadResources: unreadResources, subscriptionUserTopicList:
-                subscriptionUserTopicList,topicCreatedByUser:topicCreatedByUser])
+                subscriptionUserTopicList])
+    }
+    def secSwitchUser(){
+        render(view: '/template/secSwitchUser')
     }
     def readingItem(){
 
-        User user=User.get(session['userId'])
+        User user = springSecurityService.currentUser
         params
         readingItemService.readingItemMethod(user, params)
         redirect(controller: 'dashboard', action: 'dashboard')

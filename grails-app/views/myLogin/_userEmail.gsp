@@ -7,10 +7,10 @@
                     <h4><span class="glyphicon glyphicon-envelope"></span>Reset Password</h4>
                 </div>
                 <div class="modal-body">
-                    <g:form controller="login" action="resetPassword">
+                    <g:form class="emailValidate" controller="myLogin" action="sendResetPasswordEmail" id="${params.id}">
                         <div class="form-group">
                             <lable for="email"><span class="glyphicon glyphicon-envelope"></span>Email* : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                            <input type="email" id="email" name="email" placeholder="Enter Email"/>
+                            <input type="email" id="email" name="email" placeholder="Enter Email" required/>
                         </div>
                         <div class="modal-footer">
                             <ul>

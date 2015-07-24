@@ -18,7 +18,7 @@
             %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
                 <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
             </g:if>--}%
-            <img src="${resource(dir: 'images',file: "/userImage/${trendingTopic[0].createdBy.userName}")}" />
+            <img src="${resource(dir: 'images',file: "/userImage/${trendingTopic[0].createdBy.username}")}" />
         </div>
         <div>
             <ul style="margin-top: 2%;">
@@ -26,7 +26,7 @@
             </ul>
 
             <ul>
-                <li>${trendingTopic[0].createdBy.userName}</li>
+                <li>${trendingTopic[0].createdBy.username}</li>
                 </ul>
             <ul>
                 <li >Subscriptions</li>
@@ -56,7 +56,7 @@
                     %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
                         <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
                     </g:if>--}%
-                    <img src="${resource(dir: 'images',file: "/userImage/${trendingTopic[0].createdBy.userName}")}" />
+                    <img src="${resource(dir: 'images',file: "/userImage/${trendingTopic[0].createdBy.username}")}" />
             </div>
             <div>
                 <div class="editTopicDiv" style="display: none;">
@@ -96,11 +96,16 @@
                         <img  src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/></a>--}%
                     </li>
                     <li>
-                        <g:if test="${trendingTopic[0].createdBy.id == user.id ||  user.admin == true}">
+                        <sec:ifAllGranted roles="ROLE_ADMIN,ROLE_USER">
                             <a data-toggle="modal" class="editDiv" href="javascript:">
                                 <img src="${resource(dir:'images',file:'edit.png')}"/>
                             </a>
-                        </g:if>
+                        </sec:ifAllGranted>
+                        %{--<g:if test="${trendingTopic[0].createdBy.id == user.id ||  user.admin == true}">
+                            <a data-toggle="modal" class="editDiv" href="javascript:">
+                                <img src="${resource(dir:'images',file:'edit.png')}"/>
+                            </a>
+                        </g:if>--}%
                     </li>
                     <li>
                     %{-- <a data-toggle="modal" href="javascript:void(0)">--}%

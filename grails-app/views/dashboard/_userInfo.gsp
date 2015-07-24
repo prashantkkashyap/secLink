@@ -4,11 +4,11 @@
             <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
         </g:if>--}%
 
-            <img src="${resource(dir: 'images',file: "/userImage/${user.userName}")}" />
+            <img src="${resource(dir: 'images',file: "/userImage/${user.username}")}" />
     </div>
 
     <ul>
-        <li> ${user.userName}</li>
+        <li> ${user.username}</li>
     </ul>
     <ul>
         <li>@${user.firstName}</li>

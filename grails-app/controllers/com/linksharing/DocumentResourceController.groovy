@@ -2,15 +2,15 @@ package com.linksharing
 
 
 import com.DocumentResourceCommand
-import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 class DocumentResourceController {
+    def springSecurityService
 
     def shareDocumentResource(DocumentResourceCommand documentResourceCO){
 
-        User user=User.get(session['userId'])
+        User user=User.get(springSecurityService.principal.id)
         DocumentResource documentResource = new DocumentResource(params)
         println params
 

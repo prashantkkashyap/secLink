@@ -7,11 +7,11 @@
                 <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
             </g:if>--}%
 
-            <img src="${resource(dir: 'images',file: "/userImage/${listTopic.createdBy.userName}")}" />
+            <img src="${resource(dir: 'images',file: "/userImage/${listTopic.createdBy.username}")}" />
         </div>
         <div>
             <ul>
-                <li>${listTopic.createdBy.userName}</li>
+                <li>${listTopic.createdBy.username}</li>
                 <li class="right"><g:link controller="topic" action="showTopic" id="${listTopic.id}">${listTopic.name}</g:link></li>
             </ul>
         </div>

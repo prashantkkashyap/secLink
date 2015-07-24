@@ -16,6 +16,7 @@
     %{--<script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
     <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
     <script type="text/javascript"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
+    <script type="text/javascript" src="${resource(dir: 'js',file: 'jquery.validate.js')}"></script>
 
     <style type="text/css">
     body {font-family: Helvetica,Arial; font-size:12px;}
@@ -69,6 +70,13 @@
     }
 
     </style>
+    <script>
+        $("document").ready(function(){
+
+            $("#userProfile").validate();
+            $("#userPasswd").validate();
+        });
+    </script>
 </head>
 <body>
 <div>

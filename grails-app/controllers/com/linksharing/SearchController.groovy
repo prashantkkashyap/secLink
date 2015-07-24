@@ -1,15 +1,25 @@
 package com.linksharing
 
 import com.Visibility
+import grails.plugin.springsecurity.annotation.Secured
 
 class SearchController {
 
+    def springSecurityService
     def searchService
     def topicService
 
+//    @Secured(['ROLE_ADMIN'])
     def search() {
-        User user=User.get(session['userId'])
-        Map searchMap = searchService.searchMethod(params,user)
+        User user=springSecurityService.currentUser
+
+        boolean isAdmin
+        if((user.getAuthorities().authority as List).get(0).equals("ROLE_ADMIN"))
+             isAdmin = true
+        else isAdmin = false
+
+        def topicName = params.query
+        Map searchMap = searchService.searchMethod(topicName, user, isAdmin)
         searchMap.listTopicPost
 
 
@@ -35,15 +45,30 @@ class SearchController {
             it.name
         }*/
 
-        List <Topic> trendingTopicList = Resource.createCriteria().list() {
+        List <Topic> trendingTopicList
+        if(isAdmin.equals(true)){
+            trendingTopicList= Resource.createCriteria().list() {
+
             projections {
                 groupProperty('topic')
                 count()
+            }
+         }
+        } else if(isAdmin.equals(false)){
+            trendingTopicList= Resource.createCriteria().list() {
+
+                projections {
+                    groupProperty('topic')
+                    count()
                 }
+                "topic" {
+                    eq('visibility', Visibility.PUBLIC)
+                }
+            }
         }
         trendingTopicList = trendingTopicList.sort{it.getAt(1)}
         trendingTopicList = trendingTopicList.reverse()
-        println(trendingTopicList)
+       // println(trendingTopicList)
         //println(topicList.id)
         render(view: '/search/search', model:[user:user,listTopicPost:searchMap.listTopicPost,topPosts:resources,
                                               trendingTopicList:trendingTopicList ] )
@@ -77,7 +102,7 @@ class SearchController {
         render(view: 'search/search',model: [trendingTopicList:trendingTopicList])
     }*/
     def userSearch(){
-        User user=User.get(session['userId'])
+        User user=User.get(springSecurityService.principal.id)
         params
         def userList = searchService.userSearchMethod(params,user)
     }

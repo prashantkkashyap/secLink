@@ -1,6 +1,5 @@
 package com.linksharing
 
-import asset.pipeline.grails.LinkGenerator
 import grails.transaction.Transactional
 
 @Transactional
@@ -12,19 +11,18 @@ class EmailService {
     def emailInvitation(def params) {
         mailService.sendMail {
             to params.email
-            subject "This is a test mail"
-            body "Hello, This is a test mail, how are you?"
+            subject "Invitation of Linksharing Topic - ${params.topic.name}"
+            body "Please accept the invitation of Linksharing topic"
         }
     }
-    def resetPasswordMethod(User user, request){
-        def link = grailsLinkGenerator.serverBaseURL
+    def sendResetPasswordEmailMethod(User user, String link){
+       // def link = grailsLinkGenerator.serverBaseURL
 
-
-        def content = groovyPageRenderer.render(view : '/template/resetPassword', model: [link:link])
+      //  def content = groovyPageRenderer.render(view : '/template/resetPassword', model: [link:link])
         mailService.sendMail {
             to user.email
             subject "Linksharing - Reset Password"
-            html  (content)
+            body link
         }
 
     }

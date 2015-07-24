@@ -1,22 +1,22 @@
 package com.linksharing
 
-import com.Visibility
-import com.Seriousness
 import com.TopicCommand
 
 class TopicController {
+    def springSecurityService
     def topicService
     def readingItemService
     def searchService
 
     def topicDelete(){
-        User user = User.get(session['userId'])
+        User user = springSecurityService.currentUser
+        println user
         topicService.deleteTopicMethod(user,params)
         redirect(controller: 'dashboard' , action:'dashboard')
     }
     def topicVisibility(){
 
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
         def updateVisibility = Topic.get(params.id)
         println(updateVisibility.visibility)
         if(user){
@@ -28,7 +28,7 @@ class TopicController {
     }
     def readingItem(){
 
-        User user=User.get(session['userId'])
+        User user=User.get(springSecurityService.principal.id)
         params
         readingItemService.readingItemMethod(user, params)
 
@@ -37,7 +37,7 @@ class TopicController {
     }
 
     def topicList() {
-            User user=User.get(session['userId'])
+            User user=User.get(springSecurityService.principal.id)
 
             Map topicLists = topicService.topicListMethod(user)
         List topicListsCreatedByUser = topicLists.topicListCreatedByUser
@@ -47,7 +47,7 @@ class TopicController {
     }
 
     def showTopic(){
-        User usr =User.get(session['userId'])
+        User usr =User.get(springSecurityService.principal.id)
         def topic = Topic.get(params.id)
        // println subscribeTopic
 
@@ -76,13 +76,13 @@ class TopicController {
     }
     def updateTopicName() {
 
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
         //render(params)
         def userTopics = topicService.updateTopic(params, user)
     redirect(controller: 'dashboard', action: 'dashboard')
     }
     def postsSearch(){
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
         println params
         def postSearchList = searchService.particlrTopicPostSearchMethod(params,user)
         // println(postSearchList)
@@ -92,9 +92,10 @@ class TopicController {
     def createTopicAndSubscribeCreator(TopicCommand topicCO) {
       //  render(params)
         Topic topic = new Topic(params)
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
         if (user.topics.find { it.name == topicCO.name }) {
-            flash.message = "This topic alrady created by user ${user.userName}"
+            flash.message = "This topic alrady created by user ${user.username}"
+            render(view:'/template/alertTemplate', model: [flash:flash.message])
         } else {
             topic.createdBy = user
             topic.name = topicCO.name

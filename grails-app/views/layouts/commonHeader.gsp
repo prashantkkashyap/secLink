@@ -42,7 +42,7 @@
 <nav class="nav navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <g:link class="navbar-brand" controller="dashboard" action="dashboard">LinkSharing</g:link>
+            <g:link class="navbar-brand" controller="dashboard" title="Linksharing-Dashboard" action="dashboard">LinkSharing</g:link>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="navbar-form navbar-right">
@@ -53,11 +53,11 @@
                                 %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
                                     <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
                                 </g:if>--}%
-                                <img src="${resource(dir: 'images',file: "/userImage/${user.userName}")}" />
+                                <img src="${resource(dir: 'images',file: "/userImage/${user.username}")}" />
                             </div>
                         </g:link>
                     </li>
-                    <li><g:link controller="user" action="showUser"style="color:white;font-size: 15px;"><appTag:userFullName></appTag:userFullName></g:link></li>
+                    <li><g:link controller="user" action="showUser" style="color:white;font-size: 15px;"><appTag:userFullName></appTag:userFullName></g:link></li>
                 </ul>
                 <div class="btn-group">
                     <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
@@ -65,7 +65,8 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><g:link controller="user" action="profile">Profile</g:link></li>
-                        <li><g:link controller="login" action="logout">Logout</g:link></li>
+                        <li><g:link controller="dashboard" action="secSwitchUser">Switch User</g:link></li>
+                        <li><g:link controller="myLogout" action="index">Logout</g:link></li>
                     </ul>
                 </div>
             </div>

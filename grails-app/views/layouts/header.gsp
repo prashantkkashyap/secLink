@@ -18,6 +18,10 @@
         $(document).ready(function(){
             $("#form").validate();
         });
+        $(".secSwitchUserModalDiv").click(function(){
+            console.log ("Hello")
+            $("#secSwitchUserModal").modal();
+        });
     </script>
 
 <style type="text/css">
@@ -43,7 +47,7 @@ ul li {
 <nav class="nav navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <g:link class="navbar-brand" controller="dashboard" action="dashboard">LinkSharing</g:link>
+            <g:link class="navbar-brand" controller="dashboard" title="Linksharing-Dashboard" action="dashboard">LinkSharing</g:link>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="navbar-form navbar-right">
@@ -53,7 +57,7 @@ ul li {
                                     %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
                                     <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
                                 </g:if>--}%
-                                <img src="${resource(dir: 'images',file: "/userImage/${user.userName}")}" />
+                                <img src="${resource(dir: 'images',file: "/userImage/${user.username}")}" />
                         </g:link>
                     </li>
                     <li><g:link controller="user" action="showUser" style="color:white;font-size: 15px;"><appTag:userFullName></appTag:userFullName></g:link></li>
@@ -64,12 +68,19 @@ ul li {
                     </button>
                     <ul class="dropdown-menu">
                         <li><g:link controller="user" action="profile">Profile</g:link></li>
-                        <g:if test="${user.admin==true}">
+                        <sec:ifAllGranted roles="ROLE_ADMIN">
+                            <li><g:link controller="user" action="list">Users</g:link></li>
+                        </sec:ifAllGranted>
+                        %{--<g:if test="${user.admin==true}">
                         <li><g:link controller="user" action="list">Users</g:link></li>
-                        </g:if>
+                        </g:if>--}%
                         <li><g:link controller="topic" action="topicList">Topics</g:link></li>
                         <li><g:link controller="resource" action="viewPost">Posts</g:link></li>
-                        <li><g:link controller="login" action="logout">Logout</g:link></li>
+                       %{-- <li><a data-toggle="modal" title="Switch User" class="secSwitchUserModalDiv" href="javascript:">Switch User</a></li>--}%
+
+                        <li><g:link controller="dashboard" action="secSwitchUser">Switch User</g:link></li>
+
+                        <li><g:link controller="myLogout">Logout</g:link></li>
                     </ul>
                 </div>
             </div>
@@ -113,6 +124,7 @@ ul li {
 <g:applyLayout name="_sendInvitationMail"></g:applyLayout>
 <g:applyLayout name="_shareDocument"></g:applyLayout>
 <g:applyLayout name="_shareLink"></g:applyLayout>
+<g:applyLayout name="_secSwitchUser"></g:applyLayout>
 
 </body>
 </html>

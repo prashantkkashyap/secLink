@@ -3,10 +3,10 @@
         %{--<g:if test="${user.photo ==null}">
             <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
         </g:if>--}%
-        <img src="${resource(dir: 'images',file:"/userImage/${user.userName}")}" />
+        <img src="${resource(dir: 'images',file:"/userImage/${user.username}")}" />
     </div>
     <ul style="margin: 2%;">${user.firstName} ${user.lastName}</ul>
-    <div>@ ${user.userName}</div>
+    <div>@ ${user.username}</div>
     <ul>
         <li>Subscriptions</li>
         <li>Topics</li>

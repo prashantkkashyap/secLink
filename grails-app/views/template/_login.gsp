@@ -1,10 +1,10 @@
 <div class="inner-co1ntainer">
 <g:if test="${session["user"]}">
     </br>
- Login as : ${session["user"]}  | <g:link action="logout">Logout</g:link>
+ Login as : ${session["user"]}  | <g:link controller="myLogout">Logout</g:link>
 </g:if>
 <g:else>
-    <g:form controller="login" action="loginHandler">
+    <g:form controller="myLogin" action="loginHandler">
         <div class="line">
             <lable for="email">Email:&nbsp;&nbsp;</lable>
             <input type="email" id="email" name="email"/>

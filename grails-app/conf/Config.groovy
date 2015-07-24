@@ -211,3 +211,52 @@ log4j.main = {
 //	]
 //}
 
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.linksharing.SecUser'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.linksharing.SecUserSecRole'
+grails.plugin.springsecurity.authority.className = 'com.linksharing.SecRole'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl='/dashboard/dashboard'
+grails.plugin.springsecurity.failurHandler.defaultFailureUrl='/home/home'
+grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.rejectIfNoRule = false
+grails.plugin.springsecurity.securityConfigType = "Requestmap"
+grails.plugin.springsecurity.useSwitchUserFilter=true
+
+grails.plugin.springsecurity.fii.rejectPublicInvocations = false
+/*grails.plugin.springsecurity.switchUser.switchUserUrl = '/j_spring_security_switch_user'
+grails.plugin.springsecurity.switchUser.exitUserUrl = '/j_spring_security_exit_user'
+grails.plugin.springsecurity.switchUser.targetUrl = 'successHandler.defaultTargetUrl'
+grails.plugin.springsecurity.switchUser.switchFailureUrl = 'failureHandler.defaultFailureUrl'*/
+//grails.plugin.springsecurity.switchUser.usernameParameter= 'SwitchUserFilter.SPRING_SECURITY_SWITCH_USERNAME_KEY'
+/*grails.plugin.springsecurity.controllerAnnotations.staticRules=[
+        '/j_spring_security_switch_user':['ROLE_SWITCH_USER', 'IS_AUTHENTICATED_FULLY' ],
+        '/j_spring_security_exit_user': ['permitAll'],
+]*/
+
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                ['permitAll'],
+    '/dashboard.gsp':   ['permitAll'],
+	'/index':           ['permitAll'],
+	'/index.gsp':       ['permitAll'],
+	'/assets/**':       ['permitAll'],
+	'/**/js/**':        ['permitAll'],
+	'/**/css/**':       ['permitAll'],
+	'/**/images/**':    ['permitAll'],
+	'/**/favicon.ico':  ['permitAll'],
+    '/dbconsole/**':    ['permitAll']
+]
+grails.plugin.springsecurity.interceptUrlMap = [
+        // === THIS TWO LINES, for logout and login
+        '/logout*' :     ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/login*' :     ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/home*':         ['permitALL'],
+        '/profile*':       ['permitAll'],
+        '*':               ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/j_spring_security_switch_user': ['ROLE_SWITCH_USER', 'isFullyAuthenticated()']
+]
+
+
+
+

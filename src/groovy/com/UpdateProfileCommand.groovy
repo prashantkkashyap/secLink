@@ -14,7 +14,7 @@ class UpdateProfileCommand {
 
     static constraints = {
         photo(nullable: true)
-        userName(blank: false, unique: true, maxSize: 20)
+      //  username(blank: false, unique: true, maxSize: 20)
         firstName(maxSize: 15)
         lastName(maxSize: 15)
     }

@@ -24,7 +24,7 @@
             </div>
             <div class="line">
                 <label for="userName"> Username*: </label>
-                <input type="text" name="userName" id="${hasErrors(bean:user,field:'userName','errors')}" value="${user?.userName}"/>
+                <input type="text" name="userName" id="${hasErrors(bean:user,field:'userName','errors')}" value="${user?.username}"/>
             </div>
             <div class="line">
                 <label for="password">Password*: </label>

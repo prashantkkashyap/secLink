@@ -5,7 +5,7 @@
         %{--<g:if test="${user.photo ==null}">
             <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
         </g:if>--}%
-        <img src="${resource(dir: 'images',file:"/userImage/${user.userName}")}" />
+        <img src="${resource(dir: 'images',file:"/userImage/${user.username}")}" />
     </div>
     <div id="subscriptionBorder" style="margin-top: 2%;">
         <div class="editTopicDiv" style="display: none;">
@@ -37,12 +37,18 @@
             </li>
             <li>
                 <div class="line">
-                    <g:if test="${userTopics.createdBy.id == user.id ||  user.admin == true}">
+                    <sec:ifAllGranted roles="ROLE_ADMIN,ROLE_USER">
                         <g:form name='visibility' controller="topic"  id="${userTopics.id}" action="topicVisibility">
                             <g:select name="visibility" onchange="this.form.submit()" from="${com.Visibility}" value="${userTopics.visibility}"/>
                             <noscript><input type="submit" value="submit"></noscript>
                         </g:form>
-                    </g:if>
+                    </sec:ifAllGranted>
+                    %{--<g:if test="${userTopics.createdBy.id == user.id ||  user.admin == true}">
+                        <g:form name='visibility' controller="topic"  id="${userTopics.id}" action="topicVisibility">
+                            <g:select name="visibility" onchange="this.form.submit()" from="${com.Visibility}" value="${userTopics.visibility}"/>
+                            <noscript><input type="submit" value="submit"></noscript>
+                        </g:form>
+                    </g:if>--}%
                 </div>
             </li>
         </li>
@@ -50,19 +56,29 @@
                 <img  src="${resource(dir:'images',file:'email-letter-icon.jpg')}"/></a>
             </li>
             <li>
-                <g:if test="${userTopics.createdBy.id == user.id ||  user.admin == true}">
+                <sec:ifAllGranted roles="ROLE_USER,ROLE_ADMIN">
                     <a data-toggle="modal" class="editDiv" href="">
                         <img src="${resource(dir:'images',file:'edit.png')}"/>
                     </a>
-                </g:if>
+                </sec:ifAllGranted>
+                %{--<g:if test="${userTopics.createdBy.id == user.id ||  user.admin == true}">
+                    <a data-toggle="modal" class="editDiv" href="">
+                        <img src="${resource(dir:'images',file:'edit.png')}"/>
+                    </a>
+                </g:if>--}%
             </li>
             <li>
             %{-- <a data-toggle="modal" href="javascript:void(0)">--}%
-                <g:if test="${userTopics.createdBy.id == user.id ||  user.admin == true}">
+            <sec:ifAllGranted roles="ROLE_USER,ROLE_ADMIN">
+                <g:link controller="topic" action="topicDelete" id="${userTopics.id}">
+                    <img src="${resource(dir:'images',file:'delete.jpg')}"/>
+                </g:link>
+            </sec:ifAllGranted>
+                %{--<g:if test="${userTopics.createdBy.id == user.id ||  user.admin == true}">
                     <g:link controller="topic" action="topicDelete" id="${userTopics.id}">
                         <img src="${resource(dir:'images',file:'delete.jpg')}"/>
                     </g:link>
-                </g:if>
+                </g:if>--}%
             </li>
         </ul>
     </div>

@@ -1,10 +1,11 @@
 package com.linksharing
 
 class ResourceRatingsController {
+    def springSecurityService
 
     def resourceRatings() {
 
-        User user=User.findById(session['userId'])
+        User user=User.findById(springSecurityService.principal.id)
         def resourcePosts = Resource.findById(params.id)
 //            render params
         ResourceRatings resourceRatings=ResourceRatings.findByUserAndResource(user,resourcePosts)

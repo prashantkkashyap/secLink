@@ -1,9 +1,9 @@
 <div class="inner-container">
     <div>
-        <img src="${resource(dir:'images', file: "/userImage/${user.userName}")}"/>
+        <img src="${resource(dir:'images', file: "/userImage/${user.username}")}"/>
     </div>
     <ul>${user.firstName} ${user.lastName}</ul>
-        <div>@ ${user.userName}</div>
+        <div>@ ${user.username}</div>
         <ul>
          <li>Subscriptions</li>
          <li>Topics</li>

@@ -3,6 +3,7 @@ package com.linksharing
 import com.Visibility
 
 class HomeController {
+    def springSecurityService
     def home() {
 
         List topRecentPublicPosts =[]

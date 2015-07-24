@@ -42,7 +42,7 @@
 <nav class="nav navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <g:link class="navbar-brand" controller="dashboard" action="dashboard">LinkSharing</g:link>
+            <g:link class="navbar-brand" controller="dashboard" title="Linksharing-Dashboard" action="dashboard">LinkSharing</g:link>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="navbar-form navbar-right">
@@ -52,7 +52,7 @@
                                %{--<g:if test="${totalSubscriptionUserTopic.createdBy ==null}">
                                <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
                                 </g:if>--}%
-                                <img src="${resource(dir: 'images',file: "/userImage/${user.userName}")}" />
+                                <img src="${resource(dir: 'images',file: "/userImage/${user.username}")}" />
 
                         </g:link>
                     </li>
@@ -67,7 +67,8 @@
                         %{--<li><g:link controller="user" action="list">Users</g:link></li>
                         <li><g:link controller="topic" action="topicList">Topics</g:link></li>
                         <li><g:link controller="resource" action="viewPost">Posts</g:link></li>--}%
-                        <li><g:link controller="login" action="logout">Logout</g:link></li>
+                        <li><g:link controller="dashboard" action="secSwitchUser">Switch User</g:link></li>
+                        <li><g:link controller="myLogout">Logout</g:link></li>
                     </ul>
                 </div>
             </div>

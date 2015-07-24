@@ -19,6 +19,7 @@
     <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
     <script type="text/javascript"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>
     <script  type="text/javascript" rel="script" src="${resource(dir: 'js',file: 'linksharing.js')}"></script>
+    <script  type="text/javascript" rel="script" src="${resource(dir: 'js',file: 'jquery.validate.js')}"></script>
     <style type="text/css">
     ul li {
         list-style-type: none;
@@ -34,7 +35,12 @@
         background-color: #f9f9f9;
     }
     </style>
+    <script>
+        $(document).ready(function(){
+            $(".emailValidate").validate();
+        });
 
+    </script>
 </head>
 
 <body>
@@ -64,27 +70,52 @@
    %{-- ${flash.message}--}%
     <g:if test="${session['user']}">
         </br>
-        Login as: ${session['user']} | <g:link action="logout">Logout</g:link>
+        Login as: ${session['user']} | <g:link controller="myLogout" >Logout</g:link>
     </g:if>
     <g:else>
-        <g:form controller="login" action="loginHandler" class="form-signin">
+        %{--<g:form controller="login" action="loginHandler" class="form-signin">--}%
+        <form action='${postUrl}' method='POST' id='loginForm' class="form-signin" autocomplete='off'>
+            <p>
+                <label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
+                <input type='text' class='text_' name='j_username' id='username'/>
+            </p>
+
+            <p>
+                <label for='password'><g:message code="springSecurity.login.password.label"/>:</label>
+                <input type='password' class='text_' name='j_password' id='password'/>
+            </p>
+
+            <p id="remember_me_holder">
+                <input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
+                <label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
+            </p>
+            <p>
+                <label><a href="javascript:" id="resetPassword">Forgot password</a></label>
+            <label><g:link controller="home" action="home">Registration</g:link></label>
+            </p>
+
+            <p>
+                <input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
+            </p>
+        </form>
+       %{-- <g:form method="POST" action="${resource(file: 'j_spring_security_check')}" class="form-signin">
             <h2 class="form-signin-heading">Please sign in</h2>
             <label for="email" class="sr-only">Email address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required  autofocus>
+            <input type="email" id="email" name="j_ username" class="form-control" placeholder="Email address" required  autofocus>
             <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            <input type="password" id="password" name="j_password" class="form-control" placeholder="Password" required>
             <div class="checkbox">
                 <label><input type="checkbox" value="remember-me"> Remember me</label> </br>
                 <label>
                     <a data-toggle="modal" id="resetPassword" >Forgot password</a>
                 </label>
-        %{--<label><g:link controller="login" action="resetPassword">Forgot password</g:link></label>--}%
+        --}%%{--<label><g:link controller="login" action="resetPassword">Forgot password</g:link></label>--}%%{--
             <label><g:link controller="home" action="home">Registration</g:link></label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </g:form>
+        </g:form>--}%
     </g:else>
 </div>
-<g:render template="resetPassword"></g:render>
+<g:render template="userEmail"></g:render>
 </body>
 </html>

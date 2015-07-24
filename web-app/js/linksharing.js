@@ -11,9 +11,15 @@ $(document).ready(function(){
     $(".shareDocumentModalDiv").click(function(){
         $("#shareDocumentModal").modal();
     });
-    $(".editTopic").click(function(){
+
+    /*$(".secSwitchUserModalDiv").click(function(){
+        console.log ("Hello")
+        $("#secSwitchUserModal").modal();
+    });*/
+
+    /*$(".editTopic").click(function(){
         $("#editTopicDiv").toggle();
-    });
+    });*/
     $(".deleteTopic").click(function(){
         alert("Do you want to delete Topic ?");
     });
@@ -32,6 +38,7 @@ $(document).ready(function(){
         }, timeOut * 1000);
     }
     $('.editDiv').click(function(){
+        alert ("Do you want to change Topic Name!!")
        $('.editTopicDiv').show()
     });
     /*$(".readAndUnread").click(function(){

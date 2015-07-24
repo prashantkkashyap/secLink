@@ -1,17 +1,15 @@
 package com.linksharing
 
-class User {
+class User extends SecUser {
     String email
-    String userName
-    String password
     String confirm
     String firstName
     String lastName
     Byte photo
     Boolean active
-    Boolean admin
     Date dateCreated
     Date lastUpdated
+    String forgotPassId
 
     static hasMany = [subscriptions: Subscription, readingItems: ReadingItem,resources:Resource, topics:Topic, resourceRatings:ResourceRatings]
 
@@ -19,9 +17,10 @@ class User {
 
     static constraints = {
         email(blank: false,unique: true, email: true)
-        password(blank: false, size:8..15)
+     //   password(blank: false, size:8..15)
         photo(nullable: true)
-        userName(blank: false, unique: true, maxSize: 20)
+        forgotPassId(nullable: true)
+     //   userName(blank: false, unique: true, maxSize: 20)
         firstName(maxSize: 15)
         lastName(maxSize: 15)
 
@@ -31,7 +30,8 @@ class User {
             }
         })*/
         }
-    /*static  mapping = {
-        photo column: "photo", sqlType: "longblob"
-    }*/
+    static  mapping = {
+        //photo column: "photo", sqlType: "longblob"
+    }
+
 }

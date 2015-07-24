@@ -5,14 +5,14 @@
             <img src="${resource(dir: 'images',file: 'businessman.jpg')}">
         </g:if>--}%
 
-        <img src="${resource(dir: 'images',file: "/userImage/${userPost.createdBy.userName}")}" />
+        <img src="${resource(dir: 'images',file: "/userImage/${userPost.createdBy.username}")}" />
     </div>
     <ul>
         <li>${userPost.createdBy.firstName}</li>
         <li><g:link controller="topic" action="showTopic" id="${userPost.id}">${userPost.topic.name}</g:link></li>
     </ul>
     <ul>
-        <li>@${userPost.createdBy.userName}</li>
+        <li>@${userPost.createdBy.username}</li>
         <li>${userPost.dateCreated}</li>
        <div class="navbar-form navbar-right" style="margin-top: 5%;">
            <div>
@@ -53,29 +53,56 @@
     </ul>
     <div><p>${userPost.description}</p></div>
        <ul>
-           <li style="vertical-align: bottom;">
-               <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+           <li>
+               <a id="shareFB" href="https://www.facebook.com/sharer/sharer.php?u=URLENCODED_URL&t=TITLE"
+                  onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                  target="_blank" title="Share on Facebook">
+                   <span ><img style="width: auto;" src="${resource(dir: 'images',file:'facebook.png')}"></span></a>
+               <script type="text/javascript">document.getElementById("shareFB").setAttribute("href", "https://www.facebook.com/sharer/sharer.php?u=" + document.URL);</script>
            </li>
-            <li><img src="${resource(dir:'images', file:'twitter.jpg')}"></li>
-            <li><img src="${resource(dir:'images', file:'gplus.png')}"></li>
+           <li>
+               <div class="btn-o" data-scribe="component:button" style="width: 55px ;">
+                   <a target="_blank" href="https://twitter.com/intent/tweet?original_referer= "class=btn">
+                       <i></i>
+                       <span ><img style=";" src="${resource(dir: 'images',file:'twitter.jpg')}"></span>
+                   </a>
+               </div>
+           </li>
+           <li>
+               <a href="https://plus.google.com/share?url=URLENCODED_URL"
+                  onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=480');return false;"
+                  target="_blank" title="Share on Google+">
+                   <span ><img style="width: auto;" src="${resource(dir: 'images',file:'gplus.png')}"></span>
+               </a>
+           </li>
 
            <g:if test="${session['user']}">
            <li class="navbar-form navbar-right">
            %{-- <a data-toggle="modal" href="javascript:void(0)">--}%
-               <g:if test="${userPost.createdBy.id == user.id ||  user.admin == true}">
+               <sec:ifAllGranted roles="ROLE_USER,ROLE_ADMIN">
                    <g:link controller="topic" action="topicDelete" id="${userPost.id}">
                        <img src="${resource(dir:'images',file:'delete.jpg')}"/>
                    </g:link>
-               </g:if>
+               </sec:ifAllGranted>
+              %{-- <g:if test="${userPost.createdBy.id == user.id ||  user.admin == true}">
+                   <g:link controller="topic" action="topicDelete" id="${userPost.id}">
+                       <img src="${resource(dir:'images',file:'delete.jpg')}"/>
+                   </g:link>
+               </g:if>--}%
            %{-- </a>--}%
            </li>
 
            <li class="navbar-form navbar-right">
-               <g:if test="${userPost.createdBy.id == user.id ||  user.admin == true}">
+               <sec:ifAllGranted roles="ROLE_USER,ROLE_ADMIN">
                    <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
                        <img src="${resource(dir:'images',file:'edit.png')}"/>
                    </a>
-               </g:if>
+               </sec:ifAllGranted>
+               %{--<g:if test="${userPost.createdBy.id == user.id ||  user.admin == true}">
+                   <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
+                       <img src="${resource(dir:'images',file:'edit.png')}"/>
+                   </a>
+               </g:if>--}%
            </li>
            </g:if>
            %{--<g:if test="${userPost.instanceOf(LinkResource)}">

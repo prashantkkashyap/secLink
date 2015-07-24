@@ -16,8 +16,7 @@
     %{--<script type="text/javascript" src="${resource(dir: 'js', file: 'signup-form.js')}"></script>--}%
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#signupForm").validate({
-            });
+            $("#signupForm").validate();
         });
     </script>
     <style type="text/css">
@@ -164,13 +163,13 @@
             <a class="navbar-brand" href="#">LinkSharing</a>
         </div>
 
-        <div id="navbar" class="navbar-collapse collapse">
+        %{--<div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right">
                 <div class="form-group">
                     <input class="form-control" type="search" id="search" placeholder="Search"/>
                 </div>
             </form>
-        </div>
+        </div>--}%
     </div>
 </nav>
 
@@ -181,10 +180,34 @@
         <div class="inner-co1ntainer">
             <g:if test="${session["user"]}">
                 </br>
-             Login as : ${session["user"]}  | <g:link action="logout">Logout</g:link>
+             Login as : ${session["user"]}  | <g:link controller="myLogout">Logout</g:link>
             </g:if>
             <g:else>
-                <g:form controller="login" action="loginHandler">
+                <form action='${postUrl}' method='POST' id='loginForm' class="form-signin" autocomplete='off'>
+                    <div class="line">
+                        <label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
+                        <input type='text' class='text_' name='j_username' id='username'/>
+                    </div>
+                    <div class="line">
+                    <label for='password'><g:message code="springSecurity.login.password.label"/>:</label>
+                    <input type='password' class='text_' name='j_password' id='password1'/>
+                    </div>
+
+                    <div class="line" id="remember_me_holder">
+                        <input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
+                        <label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
+                    </div>
+
+                    <div class="line">
+                        <label><a href="javascript:" id="resetPassword">Forgot password</a></label>
+                    </div>
+
+                    <div class="line">
+                        <input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
+                    </div>
+
+                </form>
+                %{--<g:form controller="myLogin" action="index">
                     <div class="line">
                         <lable for="email">Email:&nbsp;&nbsp;</lable>
                         <input type="email" id="email" name="email" required/>
@@ -203,7 +226,7 @@
                     <div class="line">
                         <a data-toggle="modal" id="resetPassword" style="cursor: pointer;">Forgot password</a>
                     </div>
-                </g:form>
+                </g:form>--}%
             </g:else>
         </div>
     </div>

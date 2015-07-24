@@ -1,16 +1,13 @@
 package com.linksharing
 
-import com.Seriousness
-
-
 class SubscriptionsController {
-
+    def springSecurityService
     def subscriptionService
     def searchService
 
     /*def subscriptionTopics() {
 
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
 
         def subscribeTopic = Subscription.get(params.id)
         Subscription subscription = new Subscription(params)
@@ -23,7 +20,7 @@ class SubscriptionsController {
         subscription.save(flush: 'true', failOnError: 'true')
     }*/
      def subscribedTopics() {
-         User user = User.get(session['userId'])
+         User user = User.get(springSecurityService.principal.id)
          def subTopic=subscriptionService.subscribedTopicsMethod(user)
          List subTopics=subTopic.subscribedList
          subTopics=subTopics.sort {it -> it.name}
@@ -35,14 +32,14 @@ class SubscriptionsController {
      }
     def subscribeTopic(){
 
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
         params
         def subscribe = subscriptionService.subscribeTopicMethod(user, params)
         redirect(controller:'dashboard' ,action: 'dashboard')
     }
     def unSubscribeTopic(){
 
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
         params
         def topicId = Topic.get(params.id)
        // println(topicId.createdById)
@@ -58,7 +55,7 @@ class SubscriptionsController {
 
     }
   /*  def topicResources(){
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
         render(params)
        // println(params.id)
         def topicResource =SubscriptionService.topicResourcesMethod(user,params)
@@ -67,12 +64,12 @@ class SubscriptionsController {
     }*/
 
     def seriousness(){
-        User user=User.get(session['userId'])
+        User user=User.get(springSecurityService.principal.id)
         def updateSeriousness = subscriptionService.seriousnessMethod(params,user)
             redirect(controller: 'dashboard', action: 'dashboard')
         }
     def postsSearch(){
-        User user = User.get(session['userId'])
+        User user = User.get(springSecurityService.principal.id)
         println params
         def postSearchList = searchService.particlrTopicPostSearchMethod(params,user)
         // println(postSearchList)

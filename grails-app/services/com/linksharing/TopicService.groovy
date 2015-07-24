@@ -2,7 +2,6 @@ package com.linksharing
 
 import com.Visibility
 import grails.transaction.Transactional
-import org.apache.jasper.tagplugins.jstl.core.Param
 
 @Transactional
 class TopicService {
@@ -11,7 +10,7 @@ class TopicService {
 
         def topic = Topic.get(params.id)
 
-       if(topic.createdBy?.id == user.id || user.admin == true){
+       if(topic.createdBy?.id == user.id || ((user.getAuthorities().authority as List).get(0).equals("ROLE_ADMIN"))){
            topic.delete(flush: true)
        }
     }

@@ -4,6 +4,9 @@ import com.linksharing.LinkResource
 import com.linksharing.ReadingItem
 import com.linksharing.Resource
 import com.linksharing.ResourceRatings
+import com.linksharing.SecRole
+import com.linksharing.SecUser
+import com.linksharing.SecUserSecRole
 import com.linksharing.Subscription
 import com.linksharing.Topic
 import com.linksharing.User
@@ -12,13 +15,53 @@ class BootStrap {
 
     def init = { servletContext ->
 
-       /* createUser()
-        createTopic()
-        createResources()
+       // createUser()
+        //createTopic()
+        /*createResources()
         createReadingItems()
         createResourceRatings()
         subscribeTopic()*/
+        def userRole = SecRole.findByAuthority("ROLE_USER") ?: new SecRole(authority:"ROLE_USER" ).save()
+        def adminRole = SecRole.findByAuthority("ROLE_ADMIN") ?: new SecRole(authority:"ROLE_ADMIN" ).save()
+        def switchUserRole = SecRole.findByAuthority("ROLE_SWITCH_USER")?: new SecRole(authority: "ROLE_SWITCH_USER").save()
+
+       /* def user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", username: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
+        def user2 = new User(firstName: "user2", lastName: "Kashyap2", email: "abcuser2@gmail.com", username: "user2", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
+
+        user1.save(flush: true, failOnError: true)?: println("...........Error in Saving......................................")
+        user2.save(flush: true, failOnError: true)?: println("...........Error in Saving......................................")
+
+        SecUserSecRole.create user1, adminRole, true*/
     }
+   /* def createTopic() {
+        Topic user1t1 = new Topic(name: "java1", visibility: Visibility.PRIVATE)
+        Topic user1t2 = new Topic(name: "java2", visibility: Visibility.PUBLIC)
+        Topic user1t3 = new Topic(name: "java3", visibility: Visibility.PUBLIC)
+        Topic user1t4 = new Topic(name: "java4", visibility: Visibility.PRIVATE)
+        Topic user1t5 = new Topic(name: "java5", visibility: Visibility.PRIVATE)
+
+        Topic user2t1 = new Topic(name: "Grails1", visibility: Visibility.PRIVATE)
+        Topic user2t2 = new Topic(name: "Grails2", visibility: Visibility.PUBLIC)
+        Topic user2t3 = new Topic(name: "Grails3", visibility: Visibility.PUBLIC)
+        Topic user2t4 = new Topic(name: "Grails4", visibility: Visibility.PRIVATE)
+        Topic user2t5 = new Topic(name: "Grails5", visibility: Visibility.PRIVATE)
+
+        println("..............$User.count................................")
+
+       User.get(1).addToTopics(user1t1)
+                .addToTopics(user1t2)
+                .addToTopics(user1t3)
+                .addToTopics(user1t4)
+                .addToTopics(user1t5)
+                .save(flush: true, failOnError: true) ?: println("Error to add topic1")
+
+        User.get(2).addToTopics(user2t1)
+                .addToTopics(user2t2)
+                .addToTopics(user2t3)
+                .addToTopics(user2t4)
+                .addToTopics(user2t5)
+                .save(flush: true, failOnError: true) ?: println("Error to add topic2")
+    }*/
   /* List <User>createUser(){
        List<User> users =new ArrayList<User>()
        (1..5).each {

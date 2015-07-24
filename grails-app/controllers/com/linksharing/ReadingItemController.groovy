@@ -3,10 +3,11 @@ package com.linksharing
 import grails.converters.JSON
 
 class ReadingItemController {
-def readingItemService
+    def springSecurityService
+    def readingItemService
     def readingItem(){
 
-        User user=User.get(session['userId'])
+        User user=User.get(springSecurityService.principal.id)
         params
         def readingItem = readingItemService.readingItemMethod(user, params)
         String s=''
@@ -19,7 +20,7 @@ def readingItemService
 
     }
     /*def unreadingItem (){
-        User user=User.get(session['userId'])
+        User user=User.get(springSecurityService.principal.id)
         params
         def unreadingResource= Resource.get(params.id)
         ReadingItem readingItem = ReadingItem.findByUserAndResource(user,unreadingResource)

@@ -66,6 +66,7 @@ grails.project.dependency.resolution = {
         compile ":asset-pipeline:1.9.9"
         compile ":mail:1.0.7"
         compile ":quartz:1.0.2"
+        compile ":spring-security-core:2.0-RC5"
        // compile ":asynchronous-mail:1.2"
      //   compile ":kickstart-with-bootstrap:1.1.0"
 

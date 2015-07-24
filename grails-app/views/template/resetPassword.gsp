@@ -9,19 +9,20 @@
 <html>
 <head>
     <title>Reset Password</title>
-    <meta name="layout" content="UserProfileHeader">
+    %{--<meta name="layout" content="UserProfileHeader">--}%
     <link rel="stylesheet" href="${resource(dir:'css',file: 'bootstrap.min.css')}" >
     %{--<link rel="stylesheet" href="${resource(dir:'css',file: 'header.css')}">
     <link rel="stylesheet" href="${resource(dir: 'css',file: 'signin.css')}" >--}%
-    %{--<script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
-    <script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
+    %{--<script rel="script"  src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>--}%
     %{-- <script rel="script"  src="${resource(dir: 'js',file: 'linksharing.js')}"></script>--}%
+    <script rel="script" src="${resource(dir: 'js', file: 'jquery-1.11.2.min.js')}"></script>
+    <script rel="script"  src="${resource(dir: 'js',file: 'jquery.validate.js')}"></script>
 
     <style type="text/css">
     body {font-family: Helvetica,Arial; font-size:12px;}
 
     form label {display:inline-block ; width:100%;}
-    #changePassword{margin:2% 2% 2% 2%; padding:0%;width:50%;height:auto;border:1px solid black;
+    #changePassword{margin:7% 2% 2% 2%; padding:0%;width:50%;height:auto;border:1px solid black;
         }
     input[type="email"],input[type="password"]{width:160px;}
 
@@ -64,6 +65,12 @@
     }
 
     </style>
+    <script>
+        $(document).ready(function(){
+            $(".passValidate").validate();
+        });
+
+    </script>
 </head>
 <body>
 <nav class="nav navbar-inverse navbar-fixed-top">
@@ -92,16 +99,16 @@
                 <g:renderErrors bean="${user}" as="list"/>
             </div>
         </g:hasErrors>--}%
-            <g:form controller="user" action="updateUserPassword">
+            <g:form class="passValidate" controller="myLogin" action="resetPassword" id="${params.id}">
                 <fieldset>
                     <div class="line">
                         <label for="password">Password*: </label>
-                        <g:passwordField name="password" id="password"/>
+                        <g:passwordField name="password" id="password" required="required"  novalidate="novalidate"/>
 
                     </div>
                     <div class="line">
                         <label for="confirm">Confirm Password*: </label>
-                        <g:passwordField name="confirm" id="confirm"/>
+                        <g:passwordField name="confirm" id="confirm" required="required"  novalidate="novalidate"/>
 
                     </div>
                     <div class="line">

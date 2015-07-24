@@ -3,7 +3,7 @@
 <div class="inner-container" style="border: 1px solid #000000;">
 
     <div>
-        <img src="${resource(dir: 'images',file: "/userImage/${trendingTopics.user.userName}")}" />
+        <img src="${resource(dir: 'images',file: "/userImage/${trendingTopics.user.username}")}" />
     </div>
     <ul>
         <li>${trendingTopics.user.firstName} ${trendingTopics.user.lastName}</li>
@@ -16,7 +16,7 @@
         </g:elseif>--}%
     </ul>
     <ul>
-        <li>@${trendingTopics.user.userName}</li>
+        <li>@${trendingTopics.user.username}</li>
     </ul>
     <ul>
         <li>Subscriptions</li>
@@ -36,7 +36,7 @@
 
         </ul>
         <ul>
-            <li>@${trendingTopics.user.userName}</li>
+            <li>@${trendingTopics.user.username}</li>
         </ul>
         <ul>
             <li>Subscriptions</li>
@@ -57,30 +57,46 @@
              </li>
             <li>
                 <div class="line">
-                    <g:if test="${trendingTopics.user.id == user.id ||  user.admin == true}">
+                    <sec:ifAllGranted roles="ROLE_USER,ROLE_ADMIN">
                         <g:form name='visibility' controller="topic"  id="${trendingTopics.id}" action="topicVisibility">
                             <g:select name="visibility" onchange="this.form.submit()" from="${com.Visibility}" value="${trendingTopics.resource.topic.visibility}"/>
                             <noscript><input type="submit" value="submit"></noscript>
                         </g:form>
-                    </g:if>
+                    </sec:ifAllGranted>
+                    %{--<g:if test="${trendingTopics.user.id == user.id ||  user.admin == true}">
+                        <g:form name='visibility' controller="topic"  id="${trendingTopics.id}" action="topicVisibility">
+                            <g:select name="visibility" onchange="this.form.submit()" from="${com.Visibility}" value="${trendingTopics.resource.topic.visibility}"/>
+                            <noscript><input type="submit" value="submit"></noscript>
+                        </g:form>
+                    </g:if>--}%
                 </div>
             </li>
             <li class="navbar-form navbar-right" >
             %{-- <a data-toggle="modal" href="javascript:void(0)">--}%
-                <g:if test="${trendingTopics.user.id == user.id ||  user.admin== true}">
+                <sec:ifAllGranted roles="ROLE_USER,ROLE_ADMIN">
                     <g:link controller="topic" action="topicDelete" id="${userPost.id}">
                         <img src="${resource(dir:'images',file:'delete.jpg')}"/>
                     </g:link>
-                </g:if>
+                </sec:ifAllGranted>
+                %{--<g:if test="${trendingTopics.user.id == user.id ||  user.admin== true}">
+                    <g:link controller="topic" action="topicDelete" id="${userPost.id}">
+                        <img src="${resource(dir:'images',file:'delete.jpg')}"/>
+                    </g:link>
+                </g:if>--}%
             %{-- </a>--}%
             </li>
 
             <li class="navbar-form navbar-right">
-                <g:if test="${trendingTopics.user.id == user.id ||  user.admin == true}">
+             <sec:ifAllGranted roles="ROLE_USER,ROLE_ADMIN">
+                 <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
+                     <img src="${resource(dir:'images',file:'edit.png')}"/>
+                 </a>
+             </sec:ifAllGranted>
+                %{--<g:if test="${trendingTopics.user.id == user.id ||  user.admin == true}">
                     <a data-toggle="modal" href="javascript:void(0)" class="editTopic" >
                         <img src="${resource(dir:'images',file:'edit.png')}"/>
                     </a>
-                </g:if>
+                </g:if>--}%
             </li>
 
         </ul>

@@ -28,7 +28,7 @@ environments {
     }
     qa{
         dataSource{
-            dbCreate = "update"
+            dbCreate = "create-drop"
             url = "jdbc:mysql://localhost:3306/prashant_QA"
             driverClassName="com.mysql.jdbc.Driver"
             username="prashant"

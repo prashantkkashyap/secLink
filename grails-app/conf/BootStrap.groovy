@@ -32,6 +32,8 @@ class BootStrap {
         user2.save(flush: true, failOnError: true)?: println("...........Error in Saving......................................")
 
         SecUserSecRole.create user1, adminRole, true
+        SecUserSecRole.create user1, switchUserRole, true
+        SecUserSecRole.create user2, userRole, true
     }
     def createTopic() {
         Topic user1t1 = new Topic(name: "java1", visibility: Visibility.PRIVATE)

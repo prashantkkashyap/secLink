@@ -25,7 +25,7 @@ class BootStrap {
         def adminRole = SecRole.findByAuthority("ROLE_ADMIN") ?: new SecRole(authority:"ROLE_ADMIN" ).save()
         def switchUserRole = SecRole.findByAuthority("ROLE_SWITCH_USER")?: new SecRole(authority: "ROLE_SWITCH_USER").save()
 
-       /* def user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", username: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
+        /*def user1 = new User(firstName: "user1", lastName: "Kashyap", email: "abcuser1@gmail.com", username: "user1", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
         def user2 = new User(firstName: "user2", lastName: "Kashyap2", email: "abcuser2@gmail.com", username: "user2", password: "12345678", photo: [1, 2, 3, 4, 5], active: true)
         def user3 = new User(firstName: "Prashant", lastName: "Kashyap", email: "prashant.kr06@gmail.com", username: "PrashantKashyap", password: "igdefault", photo: [1, 2, 3, 4, 5], active: true)
 
@@ -79,8 +79,7 @@ class BootStrap {
                 .addToTopics(user3t3)
                 .addToTopics(user3t4)
                 .addToTopics(user3t5)
-                .save(flush: true, failOnError: true) ?: println("Error to add topic3")
-*/
+                .save(flush: true, failOnError: true) ?: println("Error to add topic3")*/
     }
     /*def createTopic() {
         Topic user1t1 = new Topic(name: "java1", visibility: Visibility.PRIVATE)

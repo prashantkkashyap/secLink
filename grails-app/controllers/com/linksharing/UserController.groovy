@@ -141,7 +141,7 @@ class UserController {
     def updateTopicName() {
 
         User user= springSecurityService.currentUser
-        render(params)
+        params
         def userTopics = topicService.updateTopic(params, user)
 
         redirect(controller: 'user', action: 'profile')
@@ -149,7 +149,7 @@ class UserController {
     }
 
     def updateUserProfile(UpdateProfileCommand updateProfileCO) {
-        render(params)
+        params
         User user= springSecurityService.currentUser
         println user
         // println(".....................${params}")
@@ -157,9 +157,11 @@ class UserController {
         user.firstName = updateProfileCO.firstName
         user.lastName = updateProfileCO.lastName
         user.username = updateProfileCO.userName
-        String path = grailsApplication.mainContext.servletContext.getRealPath("images/userImage")
-        File file = new File("${path}/${user.username}")
-        file.bytes=params.image.bytes;
+        if(!params.image) {
+            String path = grailsApplication.mainContext.servletContext.getRealPath("images/userImage")
+            File file = new File("${path}/${user.username}")
+            file.bytes = params.image.bytes;
+        }
         //user.photo = updateProfileCO.photo
         user.save(flush: 'true', failOnError: 'true')
         redirect(controller: 'user', action: 'profile')
@@ -202,9 +204,11 @@ class UserController {
            // user.photo.name = params.userName
             user.active = true
             //user.admin = false
-            String path = grailsApplication.mainContext.servletContext.getRealPath("images/userImage")
-            File file = new File("${path}/${user.username}")
-            file.bytes=params.image.bytes;
+            if(params.image != null) {
+                String path = grailsApplication.mainContext.servletContext.getRealPath("images/userImage")
+                File file = new File("${path}/${user.username}")
+                file.bytes = params.image.bytes;
+            }
 
            /* if(request instanceof MultipartHttpServletRequest) {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request;

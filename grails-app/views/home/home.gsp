@@ -275,7 +275,7 @@
                     </div>
 
                     <div class="line"><label for="image">Photo</label>
-                        <input type="file" id="image" name="image">
+                        <input type="file" id="image" name="image" required novalidate="novalidate">
                     </div>
 
                     <div class="line">
